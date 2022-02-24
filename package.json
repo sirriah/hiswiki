@@ -31,7 +31,13 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix && prettier --check --ignore-path .gitignore '**/*.{js,jsx,ts,tsx}'"
+      "eslint --fix",
+      "prettier --write"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
