@@ -2,6 +2,7 @@ import { Layout } from '../components/Layout';
 
 const Home = () => (
   <Layout>
+    <div className="font-yrsa">This is a test</div>
     <p className="mx-36">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum,
       arcu vel tempus finibus, nulla metus congue lacus, ac vehicula ex nulla

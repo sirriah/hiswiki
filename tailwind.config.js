@@ -9,6 +9,9 @@ module.exports = {
         110: '27.5rem',
         cnt: '68.75rem',
       },
+      fontFamily: {
+        yrsa: ['yrsa', 'serif'],
+      },
       colors: {
         accent: {
           200: '#FFE8CC',
