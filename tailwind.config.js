@@ -6,8 +6,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        110: '27.5rem',
-        cnt: '68.75rem',
+        content: '68.75rem',
       },
       fontFamily: {
         yrsa: ['yrsa', 'serif'],
