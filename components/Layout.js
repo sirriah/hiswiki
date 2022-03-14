@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
+import profilePic from '../public/img/profile.jpg';
 
 export const Layout = ({ children }) => (
   <>
@@ -13,9 +16,9 @@ export const Layout = ({ children }) => (
               Hiswiki
             </a>
           </Link>
-          <div class="flex-initial">
+          <div className="flex-initial">
             <form>
-              <label className="sr-only" for="search">
+              <label className="sr-only" htmlFor="search">
                 Vyhledávání
               </label>
               <input
@@ -27,17 +30,19 @@ export const Layout = ({ children }) => (
               <button
                 className="bg-white border-2 border-gray-200 hover:border-gray-400 hover:bg-gray-200 p-1 "
                 type="submit"
-                aria-label="odeslat"
+                aria-labelledby="searchButton"
               >
-                <span className="sr-only">Hledej</span>
+                <span className="sr-only" id="searchButton">
+                  Hledej
+                </span>
                 🔍
               </button>
             </form>
           </div>
 
-          <nav className="flex-1 flex" aria-label="main">
+          <nav className="flex-1 flex" aria-label="Hlavní menu">
             <ul className="flex-1 flex justify-end items-center divide-x-2 divide-accent-500">
-              <li className="">
+              <li>
                 <Link href="/new-article">
                   <a
                     className="px-8 hover:underline hover:underline-offset-8 hover:decoration-accent-500 hover:decoration-2"
@@ -50,22 +55,24 @@ export const Layout = ({ children }) => (
               <li className="flex items-center">
                 <Link href="/user-profile">
                   <a
-                    className=" px-8 hover:underline hover:underline-offset-8 hover:decoration-accent-500 hover:decoration-2 inline"
+                    className="flex items-center px-8 hover:underline hover:underline-offset-8 hover:decoration-accent-500 hover:decoration-2"
                     href="new-article"
                   >
-                    <img
-                      className="w-9 h-9 mr-4 rounded-full inline"
-                      src="../styles/img/header_background.jpg"
+                    <Image
+                      className="w-9 h-9 mr-4 rounded-full pr-8 block"
+                      src={profilePic}
                       alt=""
+                      width="36"
+                      height="36"
                     />
                     Profil
                   </a>
                 </Link>
               </li>
-              <li className="">
+              <li className="py-1.5">
                 <Link href="/log-out">
                   <a
-                    className="px-8 hover:underline hover:underline-offset-8 hover:decoration-accent-500 hover:decoration-2"
+                    className="px-8  hover:underline hover:underline-offset-8 hover:decoration-accent-500 hover:decoration-2"
                     href="new-article"
                   >
                     Odhlásit se
