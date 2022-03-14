@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-image':
+          "url('../styles/img/header_background.jpg'), linear-gradient(#854802,#FFE8CC)",
+      },
       spacing: {
         content: '68.75rem',
       },

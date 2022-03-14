@@ -2,6 +2,14 @@
   "extends": ["react-app", "eslint:recommended"],
   "plugins": ["react"],
   "rules": {
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
     "no-console": [2, { "allow": ["error"] }], // Forbid console logs
     "default-case": 0, // Allow switch without a default case
     "arrow-body-style": [2, "as-needed"], // Remove all explicit returns that are not necessary
