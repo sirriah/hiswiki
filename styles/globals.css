@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.headline-underline {
+* {
+  box-sizing: border-box;
+  border-style: border-solid;
 }
 
 html,
@@ -11,14 +13,71 @@ body {
   margin: 0;
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
+  font-weight: 400;
 }
 
 a {
+  text-decoration: underline;
+  text-decoration-color: #854802;
+  color: #854802;
+  transition: text-decoration-color 100ms ease-in-out;
+}
+
+a:hover {
+  text-decoration-color: transparent;
+}
+
+header a {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  color: black;
 }
 
-* {
-  box-sizing: border-box;
+@media screen and (min-width: 1024px) {
+  header a {
+    color: white;
+  }
+}
+
+.underline-large {
+  display: inline;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0% 40%,
+    #ffe8cc 40% 100%
+  );
+}
+
+.underline-medium {
+  display: inline-block;
+  margin-bottom: 2rem;
+  border-bottom: 2px #854802 solid;
+}
+
+@layer base {
+  .headline--1 {
+    @apply font-yrsa font-bold uppercase text-3xl leading-none px-4
+    lg:text-4xl;
+  }
+
+  .headline--2 {
+    @apply font-yrsa font-semibold text-3xl px-4;
+  }
+
+  .headline--3 {
+    @apply font-yrsa font-medium text-2xl px-4;
+  }
+
+  .paragraph {
+    @apply p-4 text-dark-600;
+  }
+
+  .btn {
+    @apply px-12 py-4 bg-accent-500 border-b-4 border-b-accent-600 rounded-md;
+  }
+
+  a.btn {
+    @apply text-white no-underline inline-block;
+  }
 }
