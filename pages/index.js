@@ -22,7 +22,7 @@ const Home = () => (
     </section>
 
     <article className="my-9">
-      <h2 className="underline-medium text-center">Článek dne</h2>
+      <h2 className="headline--2 underline-medium text-center">Článek dne</h2>
       <Image src={featuredImage} alt="" />
 
       <Link href="/">

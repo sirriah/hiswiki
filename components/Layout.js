@@ -19,35 +19,35 @@ export const Layout = ({ children }) => (
           <ul className="flex flex-col lg:flex-row">
             <li className="lg:pr-3">
               <Link href="/home">
-                <a className="underline hover:no-underline text-accent-200 decoration-accent-200">
+                <a className="underline hover:no-underline text-accent-200 decoration-accent-200 block mb-3">
                   Hlavní stránka
                 </a>
               </Link>
             </li>
             <li className="lg:px-3">
               <Link href="/home">
-                <a className="underline hover:no-underline text-accent-200 decoration-accent-200">
+                <a className="underline hover:no-underline text-accent-200 decoration-accent-200 block mb-3">
                   Vyhledávání
                 </a>
               </Link>
             </li>
             <li className="lg:px-3">
               <Link href="/home">
-                <a className="underline hover:no-underline text-accent-200 decoration-accent-200">
+                <a className="underline hover:no-underline text-accent-200 decoration-accent-200 block mb-3">
                   Přidat článek
                 </a>
               </Link>
             </li>
             <li className="lg:px-3">
               <Link href="/home">
-                <a className="underline hover:no-underline text-accent-200 decoration-accent-200">
+                <a className="underline hover:no-underline text-accent-200 decoration-accent-200 block mb-3">
                   Váš profil
                 </a>
               </Link>
             </li>
             <li className="lg:px-3">
               <Link href="/home">
-                <a className="underline hover:no-underline text-accent-200 decoration-accent-200">
+                <a className="underline hover:no-underline text-accent-200 decoration-accent-200 block mb-3">
                   Odhlásit se
                 </a>
               </Link>
