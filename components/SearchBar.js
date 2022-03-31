@@ -7,6 +7,7 @@ export const SearchBar = () => {
 
   const openSearchBarHandler = () => {
     setIsSearchOpen(!isSearchOpen);
+    /*  setIsSearchOpen((prev) => !prev); */
   };
 
   return (
@@ -17,29 +18,29 @@ export const SearchBar = () => {
       </button>
 
       <form
-        className={` ${
+        className={`${
           !isSearchOpen && 'hidden'
-        } absolute top-14 left-0 w-full p-2 bg-accent-200 
-          md:relative md:top-0 md:left-0 md:p-0 md:bg-transparent md:block`}
+        } absolute top-14 left-0 w-full p-2 bg-accent-200
+        md:relative md:top-0 md:left-0 md:p-0 md:bg-transparent md:block flex flex-row`}
       >
         <label className="sr-only" htmlFor="search">
           Vyhledávání
         </label>
         <input
-          className="border pl-4 py-1 lg:bg-stone-900/30 lg:text-white rounded-l-lg"
+          className="border border-gray-500 lg:border-white pl-4 py-1 lg:bg-stone-900/30 lg:text-white rounded-l-lg"
           type="text"
           placeholder="Vyhledávání"
           name="search"
         />
         <button
-          className="bg-white border border-gray-200 hover:border-gray-400 hover:bg-gray-200 p-1 rounded-r-lg"
+          className="bg-white border border-gray-500 lg:border-white hover:border-gray-400 hover:bg-gray-200 p-1 rounded-r-lg"
           type="submit"
           aria-labelledby="searchButton"
         >
           <span className="sr-only" id="searchButton">
             Vyhledat
           </span>
-          <IconSearch className="h-6" />
+          <IconSearch className="h-5 inline" />
         </button>
       </form>
     </div>

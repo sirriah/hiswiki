@@ -6,23 +6,23 @@ import featuredImage from '../public/img/museumtrati.jpg';
 
 const Home = () => (
   <Layout>
-    <section className="text-center px-4 my-8 md:px-12 lg:px-24">
+    <section className="text-center px-4 my-20 md:px-12 lg:px-24">
       <h1 className="headline--1 underline-large">HISWIKI</h1>
       <p className="paragraph">Na stránkách je umístěno celkem 153 článků</p>
       <p className="paragraph">
         Lorem USA dolor sit amet, consectetur adipiscing elit. Praesent egestas,
         augue elementum elementum facilisis, ligula velit fermentum libero,
         dictum malesuada justo dui sed sapien. Quisque ac erat scelerisque enim
-        mattis viverra.
+        mattis viverra.{' '}
         <Link href="/home">
-          <a> Pellentesque pulvinar</a>
-        </Link>
+          <a className="link">Pellentesque pulvinar</a>
+        </Link>{' '}
         ex gravida, consectetur erat et, semper ligula.
       </p>
     </section>
 
-    <article className="my-9 ">
-      <h2 className="headline--2 underline-medium">Článek dne</h2>
+    <article className="my-9">
+      <h2 className="underline-medium text-center">Článek dne</h2>
       <Image src={featuredImage} alt="" />
 
       <Link href="/">

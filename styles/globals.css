@@ -16,19 +16,18 @@ body {
   font-weight: 400;
 }
 
-a {
+.link {
   text-decoration: underline;
   text-decoration-color: #854802;
   color: #854802;
   transition: text-decoration-color 100ms ease-in-out;
 }
 
-a:hover {
+.link:hover {
   text-decoration-color: transparent;
 }
 
 header a {
-  color: inherit;
   text-decoration: none;
   cursor: pointer;
   color: black;
@@ -49,10 +48,14 @@ header a {
   );
 }
 
-.underline-medium {
-  display: inline-block;
-  margin-bottom: 2rem;
-  border-bottom: 2px #854802 solid;
+.underline-medium::after {
+  content: '';
+  background: #854802;
+  width: 3rem;
+  height: 2px;
+  position: relative;
+  display: block;
+  margin: 10px auto;
 }
 
 @layer base {
@@ -62,7 +65,7 @@ header a {
   }
 
   .headline--2 {
-    @apply font-yrsa font-semibold text-3xl px-4;
+    @apply font-semibold text-3xl px-4;
   }
 
   .headline--3 {
@@ -70,7 +73,11 @@ header a {
   }
 
   .paragraph {
-    @apply p-4 text-dark-600;
+    @apply p-4 text-dark-600 font-normal;
+  }
+
+  .underline-medium {
+    @apply font-normal uppercase tracking-widest shadow-neutral-900 text-center mb-5;
   }
 
   .btn {

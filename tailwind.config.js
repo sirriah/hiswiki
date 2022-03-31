@@ -13,6 +13,7 @@ module.exports = {
         content: '68.75rem',
       },
       fontFamily: {
+        body: ['Roboto'],
         yrsa: ['yrsa', 'serif'],
       },
       colors: {
