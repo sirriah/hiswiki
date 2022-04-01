@@ -7,7 +7,6 @@ export const SearchBar = () => {
 
   const openSearchBarHandler = () => {
     setIsSearchOpen(!isSearchOpen);
-    /*  setIsSearchOpen((prev) => !prev); */
   };
 
   return (

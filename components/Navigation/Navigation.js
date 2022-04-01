@@ -12,11 +12,6 @@ export const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const hamburgerTopClass = classNames({ 'rotate-45': isMenuOpen });
-  const hamburgerMiddleClass = classNames({ 'opacity-0': isMenuOpen });
-  const hamburgerBottomClass = classNames({ '-rotate-45': isMenuOpen });
-  const navClassName = classNames({ hidden: !isMenuOpen }, 'bg-accent-200 absolute top-[52px] md:top-[76px] right-0 z-50 lg:bg-transparent lg:relative lg:flex-1 lg:flex lg:top-0');
-
   return (
     <>
       <div className=" hamburger flex-1 lg:hidden relative">
@@ -26,20 +21,30 @@ export const Navigation = () => {
         >
           <span className="sr-only">Menu</span>
           <span
-            className={`${hamburgerTopClass} transition ease-in-out duration-300 origin-top-left w-[26px] h-[2px] top-[6px] right-2 bg-slate-500 block absolute`}
+            className={classNames(
+              { 'rotate-45': isMenuOpen },
+              'transition ease-in-out duration-300 origin-top-left w-[26px] h-[2px] top-[6px] right-2 bg-slate-500 block absolute',
+            )}
           />
           <span
-            className={`${hamburgerMiddleClass} transition ease-in-out duration-300 w-[26px] h-[2px] top-[15px] right-2 bg-slate-500 block absolute`}
+            className={classNames(
+              { 'opacity-0': isMenuOpen },
+              'transition ease-in-out duration-300 w-[26px] h-[2px] top-[15px] right-2 bg-slate-500 block absolute',
+            )}
           />
           <span
-            className={`${hamburgerBottomClass} transition ease-in-out duration-300 origin-bottom-left w-[26px] h-[2px] top-[24px] right-2 bg-slate-500 block absolute`}
+            className={classNames(
+              { '-rotate-45': isMenuOpen },
+              'transition ease-in-out duration-300 origin-bottom-left w-[26px] h-[2px] top-[24px] right-2 bg-slate-500 block absolute',
+            )}
           />
         </button>
       </div>
       <nav
-        className={`${hiddenMobileMenu}
-      bg-accent-200 absolute top-[52px] md:top-[76px] right-0 z-50
-      lg:bg-transparent lg:relative lg:flex-1 lg:flex lg:top-0`}
+        className={classNames(
+          { hidden: !isMenuOpen },
+          'bg-accent-200 absolute top-[52px] md:top-[76px] right-0 z-50 lg:bg-transparent lg:relative lg:flex-1 lg:flex lg:top-0',
+        )}
         aria-label="Hlavní menu"
       >
         <ul className="flex flex-col divide-y-2 justify-end items-center divide-accent-500 lg:flex-row lg:divide-y-0 lg:divide-x-2 lg:flex-1">
