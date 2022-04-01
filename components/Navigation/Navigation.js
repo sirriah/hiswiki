@@ -15,7 +15,7 @@ export const Navigation = () => {
   const hamburgerTopClass = classNames({ 'rotate-45': isMenuOpen });
   const hamburgerMiddleClass = classNames({ 'opacity-0': isMenuOpen });
   const hamburgerBottomClass = classNames({ '-rotate-45': isMenuOpen });
-  const hiddenMobileMenu = classNames({ hidden: !isMenuOpen });
+  const navClassName = classNames({ hidden: !isMenuOpen }, 'bg-accent-200 absolute top-[52px] md:top-[76px] right-0 z-50 lg:bg-transparent lg:relative lg:flex-1 lg:flex lg:top-0');
 
   return (
     <>
