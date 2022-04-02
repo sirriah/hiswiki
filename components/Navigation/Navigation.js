@@ -14,7 +14,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <div className=" hamburger flex-1 lg:hidden relative">
+      <div className="hamburger flex-1 lg:hidden relative">
         <button
           className="absolute right-0 block w-11 h-10"
           onClick={hamburgerMenuHandler}
@@ -43,7 +43,7 @@ export const Navigation = () => {
       <nav
         className={classNames(
           { hidden: !isMenuOpen },
-          'bg-accent-200 absolute top-[52px] md:top-[76px] right-0 z-50 lg:bg-transparent lg:relative lg:flex-1 lg:flex lg:top-0',
+          'bg-accent-200 absolute top-[52px] md:top-[60px] right-0 z-50 lg:bg-transparent lg:relative lg:flex-1 lg:flex lg:top-0',
         )}
         aria-label="Hlavní menu"
       >
