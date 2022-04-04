@@ -14,7 +14,7 @@ export const Navigation = ({ isScrolledDown }) => {
 
   return (
     <>
-      <div className="hamburger flex-1 lg:hidden relative ">
+      <div className="hamburger flex-1 lg:hidden relative">
         <button
           className="absolute right-0 block w-11 h-10"
           onClick={hamburgerMenuHandler}
