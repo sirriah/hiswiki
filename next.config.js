@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  experimental: {
+    images: {
+      layoutRaw: true,
+    },
+  },
   reactStrictMode: true,
   webpack: (config) => {
     const appConfig = { ...config };

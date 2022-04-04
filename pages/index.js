@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { ButtonLink } from '../components/ButtonLink';
 import { Layout } from '../components/Layout';
 import featuredImage from '../public/img/museumtrati.jpg';
-import Arrow from '../public/img/arrow.svg';
+import { PortalLink } from '../components/PortalLink';
 
-export const Home = () => {
+const Home = () => {
   const portals = [
     'Osoby',
     'Stavby',
@@ -28,7 +28,7 @@ export const Home = () => {
           egestas, augue elementum elementum facilisis, ligula velit fermentum
           libero, dictum malesuada justo dui sed sapien. Quisque ac erat
           scelerisque enim mattis viverra.{' '}
-          <Link href="/home">
+          <Link href="/article">
             <a className="link">Pellentesque pulvinar</a>
           </Link>{' '}
           ex gravida, consectetur erat et, semper ligula.
@@ -38,17 +38,9 @@ export const Home = () => {
       <section className="mb-20">
         <h2 className="underline-medium text-center">Portály</h2>
         <div className="flex justify-center m-2">
-          <div className="flex flex-wrap w-[1088px]">
-            {portals.map((item) => (
-              <Link href="/">
-                <a className="bg-accent-200 px-8 py-5 rounded-sm w-full m-2 sm:w-[calc(50%_-_16px)] lg:w-[calc(25%_-_16px)] transition-colors lg:hover:bg-light-50">
-                  <Arrow
-                    width="16px"
-                    className="fill-accent-500 rotate-90 inline -mt-1 mr-5"
-                  />
-                  <p className="inline uppercase">{item}</p>
-                </a>
-              </Link>
+          <div className="flex flex-wrap w-[1088px] pl-4">
+            {portals.map((item, i) => (
+              <PortalLink key={i}>{item}</PortalLink>
             ))}
           </div>
         </div>
@@ -186,5 +178,4 @@ export const Home = () => {
     </Layout>
   );
 };
-
 export default Home;
