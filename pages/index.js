@@ -38,7 +38,7 @@ const Home = () => {
       <section className="mb-20">
         <h2 className="underline-medium text-center">Portály</h2>
         <div className="flex justify-center">
-          <div className="flex flex-wrap w-[1088px] flex-row md:pl-4">
+          <div className="flex flex-wrap w-[1088px] md:pl-4">
             {portals.map((item, i) => (
               <PortalLink key={i}>{item}</PortalLink>
             ))}
