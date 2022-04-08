@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { ButtonLink } from '../components/ButtonLink';
-import { Layout } from '../components/Layout';
+import { LayoutHome } from '../components/home/LayoutHome';
 import featuredImage from '../public/img/museumtrati.jpg';
 import { PortalLink } from '../components/PortalLink';
 
@@ -19,7 +19,7 @@ const Home = () => {
   ];
 
   return (
-    <Layout>
+    <LayoutHome>
       <section className="text-center px-4 my-20 md:px-12 lg:px-24">
         <h1 className="headline--1 underline-large">HISWIKI</h1>
         <p className="paragraph">Na stránkách je umístěno celkem 153 článků</p>
@@ -37,8 +37,8 @@ const Home = () => {
 
       <section className="mb-20">
         <h2 className="underline-medium text-center">Portály</h2>
-        <div className="flex justify-center m-2">
-          <div className="flex flex-wrap w-[1088px] pl-4">
+        <div className="flex justify-center">
+          <div className="flex flex-wrap w-[1088px] flex-row md:pl-4">
             {portals.map((item, i) => (
               <PortalLink key={i}>{item}</PortalLink>
             ))}
@@ -48,7 +48,7 @@ const Home = () => {
 
       <h2 className="underline-medium text-center">Článek dne</h2>
 
-      <article className="my-9 px-4 md:flex justify-center">
+      <article className="my-9 md:px-4 md:flex justify-center">
         <div className="md:flex relative w-full lg:w-[1088px] bg-light-50 rounded-md">
           <Link href="/">
             <a className="w-full h-60 md:h-auto relative block">
@@ -61,7 +61,7 @@ const Home = () => {
               />
             </a>
           </Link>
-          <div className="md:px-2 py-4 lg:p-6 md:max-w-[400px] lg:max-w-[600px]">
+          <div className="px-4 py-4 lg:p-6 md:max-w-[400px] lg:max-w-[600px]">
             <Link href="/">
               <a>
                 <h3 className="headline--3 link">
@@ -69,7 +69,7 @@ const Home = () => {
                 </h3>
               </a>
             </Link>
-            <div className="px-4 text-sm text-neutral-500">
+            <div className="text-sm text-neutral-500">
               <time dateTime="2022-03-15T13:25:30+01:00">15. 3. 2022</time>
             </div>
             <p className="paragraph">
@@ -89,7 +89,7 @@ const Home = () => {
 
       <h2 className="underline-medium text-center pt-12">Nejnovější články</h2>
 
-      <section className="md:flex w-full justify-center px-4">
+      <section className="md:flex w-full justify-center">
         <div className="md:flex w-full lg:w-[1088px] space-x-4">
           <Link href="/article">
             <a className="font-medium tracking-wider text-xl flex-1">
@@ -166,7 +166,7 @@ const Home = () => {
         </div>
       </section>
 
-      <p className="my-20 mx-8 md:mx-20 lg:mx-36">
+      <p className="my-20 mx-0 md:mx-20 lg:mx-36">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum,
         arcu vel tempus finibus, nulla metus congue lacus, ac vehicula ex nulla
         non erat. Phasellus ultrices sapien sit amet eros ullamcorper lacinia.
@@ -175,7 +175,7 @@ const Home = () => {
         bibendum dolor consequat in. Duis ut porta nunc. Vivamus tempor accumsan
         finibus.
       </p>
-    </Layout>
+    </LayoutHome>
   );
 };
 export default Home;

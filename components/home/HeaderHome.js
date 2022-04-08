@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 
-import { Navigation } from '../Navigation';
-import { SearchBar } from '../SearchBar';
+import { Navigation } from '../Navigation.js';
+import { SearchBar } from '../SearchBar.js';
 
-export const Header = () => {
+export const HeaderHome = () => {
   const [isHeaderTransparent, setIsHeaderTransparent] = useState(false);
 
   useEffect(() => {

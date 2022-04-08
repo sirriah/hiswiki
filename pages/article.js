@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import classNames from 'classnames';
 
-import { LayoutSingle } from '../components/LayoutSingle';
+import { LayoutSingle } from '../components/Layout';
 import muzeum from '../public/img/museumtrati.jpg';
 import { PortalLink } from '../components/PortalLink';
 import { KeywordLink } from '../components/KeywordLink';
@@ -51,7 +51,7 @@ const Article = () => {
           </p>
         </div>
 
-        <aside className="w-full md:w-[25%] mt-8 md:m-0" aria-label="sidebar">
+        <aside className="w-full md:w-1/4 mt-8 md:m-0" aria-label="sidebar">
           <figure>
             <div className="relative block w-full h-[300px]">
               <Image
@@ -70,11 +70,7 @@ const Article = () => {
             onClick={openDetailsHandler}
             className="md:hidden font-bold p-3 bg-accent-200 cursor-pointer flex justify-between"
           >
-            {!isDetailsOpen ? (
-              <h2>Zobrazit detaily</h2>
-            ) : (
-              <h2>Skrýt detaily</h2>
-            )}
+            <h2> {!isDetailsOpen ? 'Zobrazit detaily' : 'Skrýt detaily'}</h2>
             <Arrow
               className={classNames({ 'rotate-180': !isDetailsOpen }, 'w-4')}
             />

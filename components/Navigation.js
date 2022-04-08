@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import classNames from 'classnames';
 
-import profilePic from '../../public/img/profile.jpg';
+import profilePic from '../public/img/profile.jpg';
 
 export const Navigation = ({ isScrolledDown }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
