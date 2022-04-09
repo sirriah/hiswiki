@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export const ButtonLink = ({ href, className, children }) => (
+export const CustomLink = ({ href, className, children }) => (
   <div className="flex justify-center md:justify-start">
     <Link href={href}>
       <a
