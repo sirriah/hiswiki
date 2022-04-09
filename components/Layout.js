@@ -6,11 +6,11 @@ import { Navigation } from './Navigation';
 
 export const LayoutSingle = ({ children }) => (
   <>
-    <header className="w-full h-20">
-      <div className="w-full bg-light-50 fixed z-50 top-0 transition drop-shadow-md">
-        <div className="max-w-screen-xl mx-auto py-2 px-4 md:p-3 flex relative lg:items-center">
+    <header className="h-20 w-full">
+      <div className="fixed top-0 z-50 w-full bg-light-50 drop-shadow-md transition">
+        <div className="relative mx-auto flex max-w-screen-xl py-2 px-4 md:p-3 lg:items-center">
           <Link href="/">
-            <a className="font-yrsa font-bold uppercase text-4xl leading-none pr-8 text-black  hover:text-opacity-80 transition duration-200">
+            <a className="pr-8 font-yrsa text-4xl font-bold uppercase leading-none text-black  transition duration-200 hover:text-opacity-80">
               Hiswiki
             </a>
           </Link>
@@ -23,7 +23,7 @@ export const LayoutSingle = ({ children }) => (
     </header>
 
     <main className="w-full">
-      <div className="max-w-screen-xl mx-auto bg-white md:pt-5 lg:pt-16 px-4">
+      <div className="mx-auto max-w-screen-xl bg-white px-4 md:pt-5 lg:pt-16">
         {children}
       </div>
     </main>

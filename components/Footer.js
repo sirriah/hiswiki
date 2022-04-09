@@ -10,13 +10,13 @@ const menuItem = [
 ];
 export const Footer = () => (
   <footer className="mt-20 w-full bg-dark-300 text-white">
-    <div className="max-w-screen-xl mx-auto p-6 grid grid-cols-[2fr_1fr] lg:grid-cols-[3fr_1fr]">
+    <div className="mx-auto grid max-w-screen-xl grid-cols-[2fr_1fr] p-6 lg:grid-cols-[3fr_1fr]">
       <nav>
         <ul className="flex flex-col lg:flex-row">
           {menuItem.map((item, i) => (
             <li className="lg:pr-3" key={i}>
               <Link href="/">
-                <a className="underline hover:no-underline text-accent-200 decoration-accent-200 block mb-3">
+                <a className="mb-3 block text-accent-200 underline decoration-accent-200 hover:no-underline">
                   {item}
                 </a>
               </Link>
@@ -32,7 +32,7 @@ export const Footer = () => (
         </div>
       </div>
     </div>
-    <div className="w-full bg-dark-600 text-white text-center p-5">
+    <div className="w-full bg-dark-600 p-5 text-center text-white">
       Všechna práva vyhrazena - © 2022 Loděnice v historii, z. s.
     </div>
   </footer>

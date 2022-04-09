@@ -21,7 +21,7 @@ const Article = () => {
         Muzeum trati a Ostře sledovaných vlaků
       </h1>
       <div className="flex flex-col-reverse md:flex-row">
-        <div className="md:w-[70%] md:mr-[5%]">
+        <div className="md:mr-[5%] md:w-[70%]">
           <p className="paragraph">
             Lipsum dolor sit amet, consectetur adipiscing elit. Praesent
             egestas, augue elementum elementum facilisis, ligula velit fermentum
@@ -51,9 +51,9 @@ const Article = () => {
           </p>
         </div>
 
-        <aside className="w-full md:w-1/4 mt-8 md:m-0" aria-label="sidebar">
+        <aside className="mt-8 w-full md:m-0 md:w-1/4" aria-label="sidebar">
           <figure>
-            <div className="relative block w-full h-[300px]">
+            <div className="relative block h-[300px] w-full">
               <Image
                 src={muzeum}
                 layout="fill"
@@ -61,14 +61,14 @@ const Article = () => {
                 objectFit="contain"
               />
             </div>
-            <figcaption className="text-center text-sm text-dark-300 pb-5">
+            <figcaption className="pb-5 text-center text-sm text-dark-300">
               Muzeum trati na nádraží v Loděnici při slavnostním otevření.
             </figcaption>
           </figure>
 
           <div
             onClick={openDetailsHandler}
-            className="md:hidden font-bold p-3 bg-accent-200 cursor-pointer flex justify-between"
+            className="flex cursor-pointer justify-between bg-accent-200 p-3 font-bold md:hidden"
           >
             <h2> {!isDetailsOpen ? 'Zobrazit detaily' : 'Skrýt detaily'}</h2>
             <Arrow
@@ -79,38 +79,38 @@ const Article = () => {
           <section
             className={classNames({ hidden: !isDetailsOpen }, 'pb-10 md:block')}
           >
-            <h3 className="font-yrsa font-medium uppercase tracking-widest shadow-neutral-900 text-lg py-3">
+            <h3 className="py-3 font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900">
               Detaily
             </h3>
-            <div className="p-2 bg-stone-100">
-              <h4 className="font-bold text-accent-600 tracking-wide">Název</h4>
+            <div className="bg-stone-100 p-2">
+              <h4 className="font-bold tracking-wide text-accent-600">Název</h4>
               <p className="text-dark-600">
                 Muzeum trati a Ostře sledovaných vlaků
               </p>
             </div>
 
             <div className="p-2">
-              <h4 className="font-bold text-accent-600 tracking-wide">GPS</h4>
+              <h4 className="font-bold tracking-wide text-accent-600">GPS</h4>
               <p className="text-dark-600">49.9928244N, 14.1630689E</p>
             </div>
 
-            <div className="p-2 bg-stone-100">
-              <h4 className="font-bold text-accent-600 tracking-wide">
+            <div className="bg-stone-100 p-2">
+              <h4 className="font-bold tracking-wide text-accent-600">
                 Provozovatel
               </h4>
               <p className="text-dark-600">Loděnice v historii, z. s.</p>
             </div>
 
             <div className="p-2">
-              <h4 className="font-bold text-accent-600 tracking-wide">Web</h4>
+              <h4 className="font-bold tracking-wide text-accent-600">Web</h4>
               <p className="text-dark-600">lodenicevhistorii.cz</p>
             </div>
           </section>
         </aside>
       </div>
       <section className="mt-20 mb-10 border-t-2 border-accent-200">
-        <div className="py-8 border-b-2 border-accent-200">
-          <h2 className="font-yrsa font-medium uppercase tracking-widest shadow-neutral-900 text-lg mb-5">
+        <div className="border-b-2 border-accent-200 py-8">
+          <h2 className="mb-5 font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900">
             Klíčová slova
           </h2>
           <div className="md:divide-x-2 md:divide-accent-200">
@@ -121,7 +121,7 @@ const Article = () => {
         </div>
 
         <div className="py-8">
-          <h2 className="font-yrsa font-medium uppercase tracking-widest shadow-neutral-900 text-lg mb-5">
+          <h2 className="mb-5 font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900">
             Portály
           </h2>
           <div className="flex w-full flex-wrap">
