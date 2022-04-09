@@ -5,10 +5,10 @@ import featuredImage from '../public/img/museumtrati.jpg';
 import { CustomLink } from './CustomLink';
 
 export const ArticleCard = () => (
-  <article className="my-9 md:px-4 md:flex justify-center">
-    <div className="md:flex relative w-full lg:w-[1088px] bg-light-50 rounded-md">
+  <article className="my-9 justify-center md:flex md:px-4">
+    <div className="relative w-full rounded-md bg-light-50 md:flex lg:w-[1088px]">
       <Link href="/">
-        <a className="w-full h-60 md:h-auto relative block">
+        <a className="relative block h-60 w-full md:h-auto">
           <Image
             src={featuredImage}
             alt=""
@@ -18,7 +18,7 @@ export const ArticleCard = () => (
           />
         </a>
       </Link>
-      <div className="px-4 py-4 lg:p-6 md:max-w-[400px] lg:max-w-[600px]">
+      <div className="px-4 py-4 md:max-w-[400px] lg:max-w-[600px] lg:p-6">
         <Link href="/">
           <a>
             <h3 className="headline--3 link">Muzeum Ostře sledovaných vlaků</h3>

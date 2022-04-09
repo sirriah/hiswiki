@@ -19,17 +19,17 @@ export const HeaderHome = () => {
   }, []);
 
   return (
-    <header className="w-full lg:h-[440px] lg:bg-hero-image bg-no-repeat lg:bg-fixed lg:bg-[length:100%] lg:bg-blend-multiply">
+    <header className="w-full bg-no-repeat lg:h-[440px] lg:bg-hero-image lg:bg-[length:100%] lg:bg-fixed lg:bg-blend-multiply">
       <div
         className={classNames(
           {
-            'lg:bg-light-50 drop-shadow-md': isHeaderTransparent,
+            'drop-shadow-md lg:bg-light-50': isHeaderTransparent,
             'lg:bg-transparent': !isHeaderTransparent,
           },
-          'w-full bg-light-50  fixed z-50 top-0 transition',
+          'fixed top-0  z-50 w-full bg-light-50 transition',
         )}
       >
-        <div className="max-w-screen-xl mx-auto py-2 px-4 md:p-3 flex relative lg:items-center">
+        <div className="relative mx-auto flex max-w-screen-xl py-2 px-4 md:p-3 lg:items-center">
           <Link href="/">
             <a
               className={classNames(
@@ -37,7 +37,7 @@ export const HeaderHome = () => {
                   'lg:text-black': isHeaderTransparent,
                   'lg:text-white': !isHeaderTransparent,
                 },
-                'font-yrsa font-bold uppercase text-4xl leading-none pr-8 sm:text-black hover:text-opacity-80 transition duration-200',
+                'pr-8 font-yrsa text-4xl font-bold uppercase leading-none transition duration-200 hover:text-opacity-80 sm:text-black',
               )}
             >
               Hiswiki

@@ -12,7 +12,7 @@ export const SearchBar = ({ isScrolledDown }) => {
 
   return (
     <div className="flex-initial justify-start">
-      <button className="p-1 bg-white md:hidden" onClick={openSearchBarHandler}>
+      <button className="bg-white p-1 md:hidden" onClick={openSearchBarHandler}>
         <span className="sr-only">Vyhledat</span>
         <IconSearch className="h-6" />
       </button>
@@ -20,7 +20,7 @@ export const SearchBar = ({ isScrolledDown }) => {
       <form
         className={classNames(
           { hidden: !isSearchOpen },
-          'absolute top-14 left-0 w-full p-2 bg-accent-200 md:relative md:top-0 md:left-0 md:p-0 md:bg-transparent md:block flex flex-row',
+          'absolute top-14 left-0 flex w-full flex-row bg-accent-200 p-2 md:relative md:top-0 md:left-0 md:block md:bg-transparent md:p-0',
         )}
       >
         <label className="sr-only" htmlFor="search">
@@ -29,10 +29,10 @@ export const SearchBar = ({ isScrolledDown }) => {
 
         <input
           className={classNames(
-            'border border-gray-500 pl-4 py-1  rounded-l-lg',
+            'rounded-l-lg border border-gray-500 py-1  pl-4',
             {
-              'lg:bg-white lg:text-black lg:border-stone-400': isScrolledDown,
-              'lg:bg-stone-900/30 lg:text-white lg:border-white':
+              'lg:border-stone-400 lg:bg-white lg:text-black': isScrolledDown,
+              'lg:border-white lg:bg-stone-900/30 lg:text-white':
                 !isScrolledDown,
             },
           )}
@@ -42,7 +42,7 @@ export const SearchBar = ({ isScrolledDown }) => {
         />
         <button
           className={classNames(
-            'bg-white border border-gray-500  hover:border-gray-400 hover:bg-gray-200 p-1 rounded-r-lg',
+            'rounded-r-lg border border-gray-500  bg-white p-1 hover:border-gray-400 hover:bg-gray-200',
             {
               'lg:border-stone-400': isScrolledDown,
               'lg:border-white': !isScrolledDown,
@@ -54,7 +54,7 @@ export const SearchBar = ({ isScrolledDown }) => {
           <span className="sr-only" id="searchButton">
             Vyhledat
           </span>
-          <IconSearch className="h-5 inline" />
+          <IconSearch className="inline h-5" />
         </button>
       </form>
     </div>

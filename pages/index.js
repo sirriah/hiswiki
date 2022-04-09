@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <LayoutHome>
-      <section className="text-center px-4 my-20 md:px-12 lg:px-24">
+      <section className="my-20 px-4 text-center md:px-12 lg:px-24">
         <h1 className="headline--1 underline-large">HISWIKI</h1>
         <p className="paragraph">Na stránkách je umístěno celkem 153 článků</p>
         <p className="paragraph">
@@ -36,7 +36,7 @@ const Home = () => {
       <section className="mb-20">
         <h2 className="underline-medium text-center">Portály</h2>
         <div className="flex justify-center">
-          <div className="flex flex-wrap w-[1088px] md:pl-4">
+          <div className="flex w-[1088px] flex-wrap md:pl-4">
             {portals.map((item, i) => (
               <PortalLink key={i}>{item}</PortalLink>
             ))}
@@ -48,18 +48,18 @@ const Home = () => {
 
       <ArticleCard />
 
-      <h2 className="underline-medium text-center pt-12">Nejnovější články</h2>
+      <h2 className="underline-medium pt-12 text-center">Nejnovější články</h2>
 
-      <section className="md:flex w-full justify-center">
-        <div className="md:flex w-full lg:w-[1088px] space-x-4">
+      <section className="w-full justify-center md:flex">
+        <div className="w-full space-x-4 md:flex lg:w-[1088px]">
           <Link href="/article">
-            <a className="font-medium tracking-wider text-xl flex-1">
+            <a className="flex-1 text-xl font-medium tracking-wider">
               <article
-                className='bg-[url("../styles/img/frantisek_iserle.jpg")] transition-opacity lg:hover:opacity-90 bg-stone-600 
-      bg-blend-overlay bg-cover bg-[position:50%_30%] bg-no-repeat rounded-md h-52 md:h-96 flex-1 flex relative'
+                className='relative flex h-52 flex-1 
+      rounded-md bg-stone-600 bg-[url("../styles/img/frantisek_iserle.jpg")] bg-cover bg-[position:50%_30%] bg-no-repeat bg-blend-overlay transition-opacity md:h-96 lg:hover:opacity-90'
               >
-                <div className="mt-auto w-full px-6 pb-5 pt-20 text-right text-white bg-gradient-to-t from-dark-600 to-transparent rounded-b-lg">
-                  <h3 className="text-white font-yrsa text-2xl">
+                <div className="mt-auto w-full rounded-b-lg bg-gradient-to-t from-dark-600 to-transparent px-6 pb-5 pt-20 text-right text-white">
+                  <h3 className="font-yrsa text-2xl text-white">
                     MUDr. František Iserle
                   </h3>
                   <time
@@ -77,13 +77,13 @@ const Home = () => {
           </Link>
 
           <Link href="/article">
-            <a className="font-medium tracking-wider text-xl flex-1">
+            <a className="flex-1 text-xl font-medium tracking-wider">
               <article
-                className='bg-[url("../styles/img/rodina_cifkovych.jpg")] transition-opacity lg:hover:opacity-90 bg-stone-600 
-          bg-blend-overlay bg-cover bg-[position:50%_30%] bg-no-repeat rounded-md h-52 md:h-96 flex-1 relative'
+                className='relative h-52 flex-1 rounded-md 
+          bg-stone-600 bg-[url("../styles/img/rodina_cifkovych.jpg")] bg-cover bg-[position:50%_30%] bg-no-repeat bg-blend-overlay transition-opacity md:h-96 lg:hover:opacity-90'
               >
-                <div className="absolute bottom-0 w-full px-6 pb-5 pt-20 text-right text-white bg-gradient-to-t from-dark-600 to-transparent rounded-b-lg">
-                  <h3 className="text-white font-yrsa text-2xl">
+                <div className="absolute bottom-0 w-full rounded-b-lg bg-gradient-to-t from-dark-600 to-transparent px-6 pb-5 pt-20 text-right text-white">
+                  <h3 className="font-yrsa text-2xl text-white">
                     Rodina Cífkových
                   </h3>
                   <time
@@ -101,13 +101,13 @@ const Home = () => {
           </Link>
 
           <Link href="/article">
-            <a className="font-medium tracking-wider text-xl flex-1">
+            <a className="flex-1 text-xl font-medium tracking-wider">
               <article
-                className='bg-[url("../styles/img/zamecek_vinice.jpg")] transition-opacity lg:hover:opacity-90 bg-stone-600 
-          bg-blend-overlay bg-cover bg-[position:50%_30%] bg-no-repeat rounded-md h-52 md:h-96 flex-1 relative'
+                className='relative h-52 flex-1 rounded-md 
+          bg-stone-600 bg-[url("../styles/img/zamecek_vinice.jpg")] bg-cover bg-[position:50%_30%] bg-no-repeat bg-blend-overlay transition-opacity md:h-96 lg:hover:opacity-90'
               >
-                <div className="absolute bottom-0 w-full px-6 pb-5 pt-20 text-right text-white bg-gradient-to-t from-dark-600 to-transparent rounded-b-lg">
-                  <h3 className="text-white font-yrsa text-2xl">
+                <div className="absolute bottom-0 w-full rounded-b-lg bg-gradient-to-t from-dark-600 to-transparent px-6 pb-5 pt-20 text-right text-white">
+                  <h3 className="font-yrsa text-2xl text-white">
                     Zámeček Vinice
                   </h3>
 
