@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import classNames from 'classnames';
 
-import { LayoutSingle } from '../components/Layout';
+import { Layout } from '../components/Layout';
 import muzeum from '../public/img/museumtrati.jpg';
 import { PortalLink } from '../components/PortalLink';
 import { KeywordLink } from '../components/KeywordLink';
@@ -16,7 +16,7 @@ const Article = () => {
   };
 
   return (
-    <LayoutSingle>
+    <Layout>
       <h1 className="headline--1 underline-large">
         Muzeum trati a Ostře sledovaných vlaků
       </h1>
@@ -130,7 +130,7 @@ const Article = () => {
           </div>
         </div>
       </section>
-    </LayoutSingle>
+    </Layout>
   );
 };
 
