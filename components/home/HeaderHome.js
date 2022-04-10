@@ -26,7 +26,7 @@ export const HeaderHome = () => {
             'drop-shadow-md lg:bg-light-50': isHeaderTransparent,
             'lg:bg-transparent': !isHeaderTransparent,
           },
-          'fixed top-0  z-50 w-full bg-light-50 transition',
+          'fixed top-0 z-50 w-full bg-light-50 transition',
         )}
       >
         <div className="relative mx-auto flex max-w-screen-xl py-2 px-4 md:p-3 lg:items-center">

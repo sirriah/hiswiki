@@ -29,7 +29,7 @@ export const SearchBar = ({ isScrolledDown }) => {
 
         <input
           className={classNames(
-            'rounded-l-lg border border-gray-500 py-1  pl-4',
+            'rounded-l-lg border border-gray-500 py-1 pl-4',
             {
               'lg:border-stone-400 lg:bg-white lg:text-black': isScrolledDown,
               'lg:border-white lg:bg-stone-900/30 lg:text-white':
@@ -40,9 +40,10 @@ export const SearchBar = ({ isScrolledDown }) => {
           placeholder="Vyhledávání"
           name="search"
         />
+
         <button
           className={classNames(
-            'rounded-r-lg border border-gray-500  bg-white p-1 hover:border-gray-400 hover:bg-gray-200',
+            'rounded-r-lg border border-gray-500 bg-white p-1 hover:border-gray-400 hover:bg-gray-200',
             {
               'lg:border-stone-400': isScrolledDown,
               'lg:border-white': !isScrolledDown,
