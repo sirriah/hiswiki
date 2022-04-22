@@ -6,6 +6,19 @@ const getDateFormat = (date) => {
   return stringDate;
 };
 
+const dateOfPublicationFormat = (data) =>
+  data.map((item) => {
+    if (item.dateOfPublication) {
+      const transformedDate = getDateFormat(
+        new Date(item.dateOfPublication.toDate()),
+      );
+
+      return { ...item, dateOfPublication: transformedDate };
+    }
+
+    return item;
+  });
+/* 
 const dateOfPublicationFormat = (data) => {
   data.forEach((item) => {
     if (item.dateOfPublication) {
@@ -15,15 +28,14 @@ const dateOfPublicationFormat = (data) => {
     }
   });
 };
-
+ */
 export const transformSnapshot = (snapshot) => {
   const transformedData = snapshot.docs.map((doc) => ({
     ...doc.data(),
     id: doc.id,
   }));
-  dateOfPublicationFormat(transformedData);
 
-  return transformedData;
+  return dateOfPublicationFormat(transformedData);
 };
 
 export const groupByFirstChar = (array, groupProperty) =>

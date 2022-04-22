@@ -36,7 +36,7 @@ const FirebaseArticleInputs = () => {
           Použít jiný název pro abecední řazení
         </label>
 
-        {isTitleDifferent ? (
+        {isTitleDifferent && (
           <>
             <label className="block" htmlFor="alphabeticalTitle">
               Název pro abecední řazení
@@ -47,8 +47,6 @@ const FirebaseArticleInputs = () => {
               id="alphabeticalTitle"
             />
           </>
-        ) : (
-          ''
         )}
 
         <label className="mt-4 block" htmlFor="featuredImage">

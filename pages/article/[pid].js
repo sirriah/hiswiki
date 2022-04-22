@@ -15,7 +15,7 @@ const Article = () => {
       getArticleDetail(pid).then((value) => setArticle(value));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pid]);
 
   return (
     <div>
