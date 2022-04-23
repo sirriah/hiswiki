@@ -11,10 +11,13 @@ const Article = () => {
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
+    const handleFetching = async () => {
+      setArticle(await getArticleDetail(pid));
+    };
+
     if (pid) {
-      getArticleDetail(pid).then((value) => setArticle(value));
+      handleFetching();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pid]);
 
   return (
