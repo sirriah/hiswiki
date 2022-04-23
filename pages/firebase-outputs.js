@@ -39,6 +39,12 @@ const FirebaseFirst = () => {
                 <h2>{title}</h2>
               </a>
             </Link>
+            <Link href={`/article/edit/${link}`}>
+              <a className="text-blue-600 underline">
+                <h2>edit</h2>
+              </a>
+            </Link>
+
             <p>Publikováno dne: {dateOfPublication}</p>
           </div>
         ))}

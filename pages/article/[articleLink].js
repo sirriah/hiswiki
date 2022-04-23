@@ -6,19 +6,19 @@ import { getArticleDetail } from '../../firebase/api/articles';
 
 const Article = () => {
   const router = useRouter();
-  const { pid } = router.query;
+  const { articleLink } = router.query;
 
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
     const handleFetching = async () => {
-      setArticle(await getArticleDetail(pid));
+      setArticle(await getArticleDetail(articleLink));
     };
 
-    if (pid) {
+    if (articleLink) {
       handleFetching();
     }
-  }, [pid]);
+  }, [articleLink]);
 
   return (
     <div>

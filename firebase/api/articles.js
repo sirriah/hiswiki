@@ -6,14 +6,16 @@ import {
   orderBy,
   limit,
   addDoc,
+  setDoc,
+  doc,
 } from 'firebase/firestore';
 
 import { transformSnapshot, groupByFirstChar } from '../transformData';
 import { firebase } from '../../firebase/initFirebase';
 
-export const getArticleDetail = async (pid) => {
+export const getArticleDetail = async (articleLink) => {
   const articlesCollectionRef = collection(firebase, 'articles');
-  const q = query(articlesCollectionRef, where('link', '==', pid));
+  const q = query(articlesCollectionRef, where('link', '==', articleLink));
   const dataArticle = await getDocs(q);
 
   return transformSnapshot(dataArticle);
@@ -53,8 +55,18 @@ export const getListOfAllArticlesByAlphabet = async () => {
   return groupedArticleData;
 };
 
-export const setNewArticle = async (articleObj) => {
+export const addNewArticle = async (articleObj) => {
   const articlesCollectionRef = collection(firebase, 'articles');
   const payload = { title: articleObj.title, content: articleObj.content };
   await addDoc(articlesCollectionRef, payload);
+};
+
+export const editArticle = async (articleObj) => {
+  const docRef = doc(firebase, 'articles', articleObj.id);
+  const payload = {
+    title: articleObj.title,
+    content: articleObj.content,
+    alphabetical: articleObj.alphabetical,
+  };
+  await setDoc(docRef, payload);
 };

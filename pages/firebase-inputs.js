@@ -11,7 +11,7 @@ const FirebaseArticleInputs = () => {
 
     // eslint-disable-next-line no-console
     console.log(e.target);
-    // setNewArticle(articleObj);
+    // addNewArticle(articleObj);
   };
 
   const isTitleDifferentChangeHandler = () => {
