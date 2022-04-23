@@ -18,17 +18,7 @@ const dateOfPublicationFormat = (data) =>
 
     return item;
   });
-/* 
-const dateOfPublicationFormat = (data) => {
-  data.forEach((item) => {
-    if (item.dateOfPublication) {
-      item.dateOfPublication = getDateFormat(
-        new Date(item.dateOfPublication.toDate()),
-      );
-    }
-  });
-};
- */
+
 export const transformSnapshot = (snapshot) => {
   const transformedData = snapshot.docs.map((doc) => ({
     ...doc.data(),
