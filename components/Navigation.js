@@ -62,7 +62,7 @@ export const Navigation = ({ isScrolledDown }) => {
       >
         <ul className="flex flex-col items-center justify-end divide-y-2 divide-accent-500 lg:flex-1 lg:flex-row lg:divide-y-0 lg:divide-x-2">
           <li className="py-4">
-            <Link href="/new-article">
+            <Link href="/article/new-article">
               <a className={`px-8 ${menuLinkStyle}`}>Nový článek</a>
             </Link>
           </li>

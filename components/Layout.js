@@ -23,7 +23,7 @@ export const Layout = ({ children }) => (
     </header>
 
     <main className="w-full">
-      <div className="mx-auto max-w-screen-xl bg-white px-4 md:pt-5 lg:pt-16">
+      <div className="mx-auto max-w-screen-xl bg-white px-4 md:pt-5 lg:pt-12">
         {children}
       </div>
     </main>

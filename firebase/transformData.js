@@ -40,3 +40,48 @@ export const groupByFirstChar = (array, groupProperty) =>
 
     return acc;
   }, {});
+
+export const createSlugLink = (title) =>
+  title
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+
+export const parseKeywords = (keywordsString) => {
+  if (keywordsString) {
+    const arrayKeywords = keywordsString.split(',');
+
+    arrayKeywords.forEach((item, index) => {
+      if (item.length < 2) {
+        arrayKeywords.splice(index, 1);
+      }
+    });
+
+    return arrayKeywords.map((item) => {
+      const trimItem = item.trim();
+
+      const uppercaseItem =
+        trimItem.charAt(0).toUpperCase() + trimItem.slice(1);
+
+      return uppercaseItem;
+    });
+  }
+};
+
+export const setKeywordsToString = (dataArticle) =>
+  dataArticle.map((item) => {
+    if (item.keywords !== '') {
+      const transformedKeywords = item.keywords.join(', ');
+
+      return { ...item, keywords: transformedKeywords };
+    }
+
+    return item;
+  });
+
+export const transformFirstCharToUpperCase = (string) => {
+  if (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+};

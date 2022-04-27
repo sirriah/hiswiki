@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { editArticle, getArticleDetail } from '../../../firebase/api/articles';
-import { ArticleInputs } from '../ArticleInputs';
+import { getArticleDetail } from '../../../firebase/api/articles';
+import { ArticleForm } from '../ArticleForm';
+import { Layout } from '../../../components/Layout';
 
 const EditArticle = () => {
   const router = useRouter();
@@ -11,31 +12,48 @@ const EditArticle = () => {
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
-    if (router.isReady) {
-      const articleDetail = getArticleDetail(articleLink);
-      articleDetail.then((value) => setArticle(value));
+    const handleFetching = async () => {
+      setArticle(await getArticleDetail(articleLink));
+    };
+
+    if (articleLink) {
+      handleFetching();
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const addEditArticleHandler = (articleObj) => {
-    editArticle(articleObj);
-  };
+  }, [articleLink]);
 
   return (
-    <div>
-      <h1 className="headline--1">Editace clanku</h1>
-      {article.map(({ id, title, alphabeticalTitle, content }) => (
-        <ArticleInputs
-          titleProp={title}
-          alphabeticalTitleProp={alphabeticalTitle}
-          contentProp={content}
-          idProp={id}
-          onEditArticle={addEditArticleHandler}
-        />
-      ))}
-    </div>
+    <Layout>
+      <div>
+        <h1 className="headline--1 underline-large">Editace článku</h1>
+        {article.map(
+          ({
+            id,
+            title,
+            alphabeticalTitle,
+            content,
+            featuredImage,
+            altForFeaturedImage,
+            keywords,
+            portals,
+            link,
+          }) => (
+            <ArticleForm
+              key={id}
+              titleProp={title}
+              alphabeticalTitleProp={alphabeticalTitle}
+              contentProp={content}
+              idProp={id}
+              onEditArticle
+              featuredImageProp={featuredImage}
+              altForFeaturedImageProp={altForFeaturedImage}
+              keywordsProp={keywords}
+              portalsProp={portals}
+              linkProp={link}
+            />
+          ),
+        )}
+      </div>
+    </Layout>
   );
 };
 

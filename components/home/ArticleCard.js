@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-export const ArticleCard = ({ imageLink, title, date, author }) => (
-  <Link href="/article">
+export const ArticleCard = ({ imageLink, title, date, author, link }) => (
+  <Link href={`/article/${link}`}>
     <a className="flex-1 text-xl font-medium tracking-wider">
       <article
         style={{ backgroundImage: `url(${imageLink})` }}
