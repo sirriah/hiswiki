@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { addNewArticle, editArticle } from '../../firebase/api/articles';
+import { addNewArticle, editArticle } from '../firebase/api/articles';
 
 export const ArticleForm = ({
   titleProp,

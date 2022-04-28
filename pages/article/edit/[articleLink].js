@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { getArticleDetail } from '../../../firebase/api/articles';
-import { ArticleForm } from '../ArticleForm';
+import { ArticleForm } from '../../../components/ArticleForm';
 import { Layout } from '../../../components/Layout';
 
 const EditArticle = () => {

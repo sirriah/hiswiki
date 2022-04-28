@@ -1,4 +1,4 @@
-import { ArticleForm } from './ArticleForm';
+import { ArticleForm } from '../../components/ArticleForm';
 import { Layout } from '../../components/Layout';
 
 const NewArticle = () => (
