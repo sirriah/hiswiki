@@ -1,9 +1,23 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import imgPlaceholder from '../public/img/img_placeholder.png';
-import { addNewArticle, editArticle } from '../firebase/api/articles';
+import { FormInput } from './Form/FormInput';
+import { FormTextarea } from './Form/FormTextarea';
+import { FormCheckbox } from './Form/FormCheckbox';
+
+const listOfPortalsValues = [
+  'Osoby',
+  'Budovy',
+  'Instituce',
+  'Spolky',
+  'Události',
+  'Firmy',
+  'Archeologie',
+  'Chrustenice',
+  'Jánská',
+];
 
 export const ArticleForm = ({
   titleProp,
@@ -11,8 +25,7 @@ export const ArticleForm = ({
   contentProp,
   idProp,
   featuredImageProp,
-  onEditArticle,
-  onAddNewArticle,
+  articleCallback,
   altForFeaturedImageProp,
   keywordsProp,
   portalsProp,
@@ -20,133 +33,86 @@ export const ArticleForm = ({
 }) => {
   const router = useRouter();
 
-  const listOfPortalsValues = [
-    'Osoby',
-    'Budovy',
-    'Instituce',
-    'Spolky',
-    'Události',
-    'Firmy',
-    'Archeologie',
-    'Chrustenice',
-    'Jánská',
-  ];
-
   const [isTitleDifferent, setIsTitleDifferent] = useState(
     alphabeticalTitleProp && alphabeticalTitleProp !== titleProp,
   );
+  const [featuredImage, setFeaturedImage] = useState(featuredImageProp || '');
 
-  const portalsReduceToState = (arrayOfPortalsNames) => {
-    const tempArray = new Array(listOfPortalsValues.length).fill(false);
-
-    arrayOfPortalsNames.forEach((item) => {
-      const index = listOfPortalsValues.indexOf(item);
-      tempArray[index] = true;
-    });
-
-    return tempArray;
-  };
-
-  const [portalsCheckboxes, setPortalsCheckboxes] = useState(
-    portalsProp
-      ? portalsReduceToState(portalsProp)
-      : new Array(listOfPortalsValues.length).fill(false),
-  );
-
-  const onChangeHandler = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-
-  const checkboxesOnChangeHandler = (position) => {
-    const updatedCheckedState = portalsCheckboxes.map((item, index) =>
-      index === position ? !item : item,
-    );
-
-    setPortalsCheckboxes(updatedCheckedState);
-
-    const portalsArray = updatedCheckedState.reduce(
-      (array, item, index) =>
-        item ? array.concat(listOfPortalsValues[index]) : array,
-      [],
-    );
-
-    setFormData({ ...formData, portals: portalsArray });
-  };
-
-  const [formData, setFormData] = useState({
-    id: idProp || '',
-    title: titleProp,
-    alphabeticalTitle: alphabeticalTitleProp || '',
-    content: contentProp || '',
-    featuredImage: featuredImageProp || '',
-    altForFeaturedImage: altForFeaturedImageProp || '',
-    keywords: keywordsProp && keywordsProp.join(', '),
-    portals: portalsProp || '',
-    link: linkProp || '',
-  });
-
-  const isTitleDifferentChangeHandler = () => {
+  const handleTitleCheckboxChange = () => {
     setIsTitleDifferent(!isTitleDifferent);
   };
 
-  const articleHandler = (e) => {
+  const handleImageChange = (e) => {
+    setFeaturedImage(e.target.value);
+  };
+
+  const formSubmit = async (e) => {
     e.preventDefault();
 
-    if (onAddNewArticle) {
-      addNewArticle(formData);
-    }
-    if (onEditArticle) {
-      editArticle(formData);
-    }
+    const portals = listOfPortalsValues.filter(
+      (_, index) => !!e.target[`portals[${index}]`]?.checked,
+    );
+
+    const formData = {
+      title: e.target.title.value,
+      alphabeticalTitle: e.target.alphabeticalTitle?.value,
+      content: e.target.content.value,
+      featuredImage: e.target.featuredImage.value,
+      altForFeaturedImage: e.target.altForFeaturedImage.value,
+      keywords: e.target.keywords.value,
+      id: idProp || '',
+      link: linkProp || '',
+      portals,
+    };
+
+    await articleCallback(formData);
 
     router.push('/');
   };
 
+  const keywordPropSeparated = useMemo(
+    () => keywordsProp?.join?.(', ') || '',
+    [keywordsProp],
+  );
+
+  const transformedPortals = useMemo(
+    () => listOfPortalsValues.map((item) => !!portalsProp?.includes(item)),
+    [portalsProp],
+  );
+
   return (
-    <form className="mt-5" onSubmit={articleHandler}>
+    <form className="mt-5" onSubmit={formSubmit}>
       <div className="flex flex-col justify-between lg:flex-row">
         <div className="w-full lg:w-[70%]">
-          <label className="my-1 block text-sm text-stone-700" htmlFor="title">
-            Název *
-          </label>
-          <input
+          <FormInput
+            labelClassName="my-1 block text-sm text-stone-700"
+            label="Název"
             className="headline--2 mb-6 block w-full border-b-2 border-stone-300 bg-light-50 p-2 text-stone-700"
             id="title"
             type="text"
-            value={formData.title}
-            onChange={onChangeHandler}
             required
+            defaultValue={titleProp || ''}
           />
 
-          <label
-            className="mt-6 mb-1 block text-sm text-stone-700"
-            htmlFor="content"
-          >
-            Obsah *
-          </label>
-          <textarea
+          <FormTextarea
+            labelClassName="mt-6 mb-1 block text-sm text-stone-700"
             className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
+            label="Obsah"
             cols="60"
             rows="20"
             id="content"
-            value={formData.content}
-            onChange={onChangeHandler}
             required
+            defaultValue={contentProp || ''}
           />
 
-          <label
-            className="my-1 mt-6 block text-sm text-stone-700"
-            htmlFor="keywords"
-          >
-            Klíčová slova - více slov oddělte čárkou
-          </label>
-          <textarea
+          <FormTextarea
+            labelClassName="my-1 block text-sm text-stone-700"
             id="keywords"
             className="mb-6 border-b-2 border-stone-300 bg-light-50 p-2"
+            label=" Klíčová slova - více slov oddělte čárkou"
             rows="4"
             cols="30"
-            onChange={onChangeHandler}
-            value={formData.keywords}
+            defaultValue={keywordPropSeparated || ''}
           />
 
           <div>
@@ -159,14 +125,14 @@ export const ArticleForm = ({
             <ul>
               {listOfPortalsValues.map((item, index) => (
                 <li key={index}>
-                  <input
+                  <FormCheckbox
                     className="mr-3 mb-2"
                     type="checkbox"
-                    id={`portals-${index}`}
-                    name={item}
+                    id={`portals[${index}]`}
                     value={item}
-                    checked={portalsCheckboxes[index]}
-                    onChange={() => checkboxesOnChangeHandler(index)}
+                    // checked={portalsCheckboxes[index]}
+                    // onChange={() => checkboxesOnChangeHandler(index)}
+                    defaultChecked={transformedPortals[index]}
                   />
                   <label htmlFor={`portals-${index}`}>{item}</label>
                 </li>
@@ -176,11 +142,10 @@ export const ArticleForm = ({
         </div>
 
         <aside className="w-full lg:w-[25%]">
-          <input
-            type="checkbox"
+          <FormCheckbox
             id="isTitleDifferent"
             checked={isTitleDifferent}
-            onChange={isTitleDifferentChangeHandler}
+            onChange={handleTitleCheckboxChange}
           />
           <label
             className="my-4 mt-4 ml-3 text-sm text-stone-700"
@@ -188,64 +153,48 @@ export const ArticleForm = ({
           >
             Použít jiný název pro abecední řazení
           </label>
+
           {isTitleDifferent && (
-            <>
-              <label
-                className="mt-6 mb-1 block text-sm text-stone-700"
-                htmlFor="alphabeticalTitle"
-              >
-                Název pro abecední řazení
-              </label>
-              <input
-                className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
-                type="text"
-                id="alphabeticalTitle"
-                value={formData.alphabeticalTitle}
-                onChange={onChangeHandler}
-              />
-            </>
+            <FormInput
+              labelClassName="mt-6 mb-1 block text-sm text-stone-700"
+              className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
+              label="Název pro abecední řazení"
+              type="text"
+              id="alphabeticalTitle"
+              defaultValue={alphabeticalTitleProp || ''}
+            />
           )}
-          <label
-            className="my-1 mt-6 block text-sm text-stone-700"
-            htmlFor="featuredImage"
-          >
-            Hlavní obrázek - URL
-          </label>
-          <input
+
+          <FormInput
+            labelClassName="my-1 mt-6 block text-sm text-stone-700"
             className="mb-6 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
             id="featuredImage"
+            label="Hlavní obrázek - URL"
             type="text"
-            value={formData.featuredImage}
-            onChange={onChangeHandler}
+            value={featuredImage}
+            onChange={handleImageChange}
           />
 
           <Image
-            src={
-              formData.featuredImage ? formData.featuredImage : imgPlaceholder
-            }
+            src={featuredImage || imgPlaceholder}
             width="100"
             height="100"
             alt=""
           />
 
-          <label
-            className="my-1 mt-6 block text-sm text-stone-700"
-            htmlFor="altForFeaturedImage"
-          >
-            Popis obrázku
-          </label>
-          <textarea
+          <FormTextarea
+            labelClassName="my-1 mt-6 block text-sm text-stone-700"
             id="altForFeaturedImage"
             className="mb-6 w-full border-b-2 border-stone-300 bg-light-50 p-2"
+            label="Popis obrázku"
             rows="4"
-            onChange={onChangeHandler}
-            value={formData.altForFeaturedImage}
+            defaultValue={altForFeaturedImageProp || ''}
           />
         </aside>
       </div>
       <button
         className="my-4 rounded-md border-b-4 border-b-accent-600 bg-accent-500 px-10 py-3 text-white transition-colors hover:border-accent-500 hover:bg-accent-600"
-        type="Submit"
+        type="submit"
       >
         Odeslat
       </button>

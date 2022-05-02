@@ -23,7 +23,7 @@ export const getArticleDetail = async (articleLink) => {
   const articlesCollectionRef = collection(firebase, 'articles');
   const q = query(articlesCollectionRef, where('link', '==', articleLink));
   const dataArticle = await getDocs(q);
-  const transformedData = transformSnapshot(dataArticle);
+  const [transformedData] = transformSnapshot(dataArticle);
 
   return transformedData;
 };
@@ -63,37 +63,41 @@ export const getListOfAllArticlesByAlphabet = async () => {
   return groupedArticleData;
 };
 
-export const addNewArticle = async (articleObj) => {
-  const title = transformFirstCharToUpperCase(articleObj.title);
+export const addNewArticle = async (formData) => {
+  const title = transformFirstCharToUpperCase(formData.title);
   const alphabeticalTitle = transformFirstCharToUpperCase(
-    articleObj.alphabeticalTitle,
+    formData.alphabeticalTitle,
   );
-  const articlesCollectionRef = collection(firebase, 'articles');
+
   const payload = {
     title: title || '',
-    content: articleObj.content || '',
-    alphabeticalTitle: alphabeticalTitle || articleObj.title,
-    featuredImage: articleObj.featuredImage || '',
-    link: createSlugLink(articleObj.title || ''),
+    content: formData.content || '',
+    alphabeticalTitle: alphabeticalTitle || formData.title,
+    featuredImage: formData.featuredImage || '',
+    link: createSlugLink(formData.title || ''),
     dateOfPublication: new Date(),
-    altForFeaturedImage: articleObj.altForFeaturedImage || '',
-    keywords: parseKeywords(articleObj.keywords) || '',
-    portals: articleObj.portals || '',
+    altForFeaturedImage: formData.altForFeaturedImage || '',
+    keywords: parseKeywords(formData.keywords) || '',
+    portals: formData.portals || '',
   };
+
+  const articlesCollectionRef = collection(firebase, 'articles');
   await addDoc(articlesCollectionRef, payload);
 };
 
-export const editArticle = async (articleObj) => {
-  const alphabeticalTitle = articleObj.alphabeticalTitle || articleObj.title;
-  const docRef = doc(firebase, 'articles', articleObj.id);
+export const editArticle = async (formData) => {
+  const alphabeticalTitle = formData.alphabeticalTitle || formData.title;
+
   const payload = {
-    title: articleObj.title,
-    content: articleObj.content,
-    featuredImage: articleObj.featuredImage,
+    title: formData.title,
+    content: formData.content,
+    featuredImage: formData.featuredImage,
     alphabeticalTitle,
-    altForFeaturedImage: articleObj.altForFeaturedImage,
-    keywords: parseKeywords(articleObj.keywords),
-    portals: articleObj.portals,
+    altForFeaturedImage: formData.altForFeaturedImage,
+    keywords: parseKeywords(formData.keywords),
+    portals: formData.portals,
   };
+
+  const docRef = doc(firebase, 'articles', formData.id);
   await setDoc(docRef, payload, { merge: true });
 };
