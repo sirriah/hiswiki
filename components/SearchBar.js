@@ -12,7 +12,10 @@ export const SearchBar = ({ isScrolledDown }) => {
 
   return (
     <div className="flex-initial justify-start">
-      <button className="bg-white p-1 md:hidden" onClick={openSearchBarHandler}>
+      <button
+        className="bg-transparent p-1 md:hidden"
+        onClick={openSearchBarHandler}
+      >
         <span className="sr-only">Vyhledat</span>
         <IconSearch className="h-6" />
       </button>

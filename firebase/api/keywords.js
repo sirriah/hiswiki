@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 
 import { firebase } from '../initFirebase';
-import { transformSnapshot, groupByFirstChar } from '../transformData';
+import { transformSnapshot, groupByFirstChar } from '../../utils/transformData';
 
 export const getArticlesOfKeywords = async (keyword) => {
   const articlesCollectionRef = collection(firebase, 'articles');

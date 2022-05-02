@@ -16,7 +16,7 @@ import {
   createSlugLink,
   parseKeywords,
   transformFirstCharToUpperCase,
-} from '../transformData';
+} from '../../utils/transformData';
 import { firebase } from '../../firebase/initFirebase';
 
 export const getArticleDetail = async (articleLink) => {

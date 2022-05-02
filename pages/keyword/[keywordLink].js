@@ -23,21 +23,25 @@ const Keyword = () => {
 
   return (
     <Layout>
-      <h2 className="headline--1 mb-4">Abecední seznam</h2>
-      {Object.entries(keyword).map(([groupLetter, articles]) => (
-        <div className="m-5" key={groupLetter}>
-          <h3 className="headline--4">{groupLetter}</h3>
-          {articles.map(({ title, link, id }) => (
-            <li className="my-2" key={id}>
-              <Link href={`/article/${link}`}>
-                <a className="block text-blue-600 underline">
-                  <h2>{title}</h2>
-                </a>
-              </Link>
-            </li>
-          ))}
-        </div>
-      ))}
+      <div>
+        <h2 className="headline--1 mb-4">Klíčové slovo: {keywordLink}</h2>
+        {Object.entries(keyword).map(([groupLetter, articles]) => (
+          <div className="m-5" key={groupLetter}>
+            <h3 className="headline--4">{groupLetter}</h3>
+            <ul className="list-disc">
+              {articles.map(({ title, link, id }) => (
+                <li className="my-2 " key={id}>
+                  <Link href={`/article/${link}`}>
+                    <a className="inline-block text-accent-500 underline hover:no-underline">
+                      <h2>{title}</h2>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </Layout>
   );
 };

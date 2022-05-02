@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import imgPlaceholder from '../public/img/img_placeholder.png';
 import { addNewArticle, editArticle } from '../firebase/api/articles';
 
 export const ArticleForm = ({
@@ -217,14 +218,15 @@ export const ArticleForm = ({
             value={formData.featuredImage}
             onChange={onChangeHandler}
           />
-          {formData.featuredImage && (
-            <Image
-              src={formData.featuredImage}
-              width="100"
-              height="100"
-              alt=""
-            />
-          )}
+
+          <Image
+            src={
+              formData.featuredImage ? formData.featuredImage : imgPlaceholder
+            }
+            width="100"
+            height="100"
+            alt=""
+          />
 
           <label
             className="my-1 mt-6 block text-sm text-stone-700"
