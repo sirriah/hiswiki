@@ -153,6 +153,7 @@ export const ArticleForm = ({
             id="isTitleDifferent"
             checked={isTitleDifferent}
             onChange={handleTitleCheckboxChange}
+            defaultChecked={isTitleDifferent || false}
           />
           <label
             className="my-4 mt-4 ml-3 text-sm text-stone-700"
