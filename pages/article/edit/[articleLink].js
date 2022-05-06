@@ -45,16 +45,16 @@ const EditArticle = () => {
     <Layout>
       <h1 className="headline--1 underline-large">Editace článku</h1>
       <ArticleForm
-        titleProp={title}
-        alphabeticalTitleProp={alphabeticalTitle}
-        contentProp={content}
-        idProp={id}
+        title={title}
+        alphabeticalTitle={alphabeticalTitle}
+        content={decodeURIComponent(content)}
+        id={id}
         articleCallback={editArticle}
-        featuredImageProp={featuredImage}
-        altForFeaturedImageProp={altForFeaturedImage}
-        keywordsProp={keywords}
-        portalsProp={portals}
-        linkProp={link}
+        featuredImage={decodeURIComponent(featuredImage)}
+        altForFeaturedImage={decodeURIComponent(altForFeaturedImage)}
+        keywords={keywords}
+        portals={portals}
+        link={link}
       />
     </Layout>
   );

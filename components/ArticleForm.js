@@ -20,30 +20,33 @@ const listOfPortalsValues = [
 ];
 
 export const ArticleForm = ({
-  titleProp,
-  alphabeticalTitleProp,
-  contentProp,
-  idProp,
-  featuredImageProp,
+  title,
+  alphabeticalTitle,
+  content,
+  id,
+  featuredImage,
   articleCallback,
-  altForFeaturedImageProp,
-  keywordsProp,
-  portalsProp,
-  linkProp,
+  altForFeaturedImage,
+  keywords,
+  portals,
+  link,
 }) => {
   const router = useRouter();
 
   const [isTitleDifferent, setIsTitleDifferent] = useState(
-    alphabeticalTitleProp && alphabeticalTitleProp !== titleProp,
+    alphabeticalTitle && alphabeticalTitle !== title,
   );
-  const [featuredImage, setFeaturedImage] = useState(featuredImageProp || '');
+
+  const [featuredImageState, setFeaturedImageState] = useState(
+    featuredImage || '',
+  );
 
   const handleTitleCheckboxChange = () => {
     setIsTitleDifferent(!isTitleDifferent);
   };
 
   const handleImageChange = (e) => {
-    setFeaturedImage(e.target.value);
+    setFeaturedImageState(e.target.value);
   };
 
   const formSubmit = async (e) => {
@@ -60,8 +63,8 @@ export const ArticleForm = ({
       featuredImage: e.target.featuredImage.value,
       altForFeaturedImage: e.target.altForFeaturedImage.value,
       keywords: e.target.keywords.value,
-      id: idProp || '',
-      link: linkProp || '',
+      id: id || '',
+      link: link || '',
       portals,
     };
 
@@ -71,13 +74,13 @@ export const ArticleForm = ({
   };
 
   const keywordPropSeparated = useMemo(
-    () => keywordsProp?.join?.(', ') || '',
-    [keywordsProp],
+    () => keywords?.join?.(', ') || '',
+    [keywords],
   );
 
   const transformedPortals = useMemo(
-    () => listOfPortalsValues.map((item) => !!portalsProp?.includes(item)),
-    [portalsProp],
+    () => listOfPortalsValues.map((item) => !!portals?.includes(item)),
+    [portals],
   );
 
   return (
@@ -91,7 +94,9 @@ export const ArticleForm = ({
             id="title"
             type="text"
             required
-            defaultValue={titleProp || ''}
+            defaultValue={title || ''}
+            pattern="[a-zA-Z0-9 .]+"
+            title="Pouze velka a mala pismena a cisla."
           />
 
           <FormTextarea
@@ -102,7 +107,7 @@ export const ArticleForm = ({
             rows="20"
             id="content"
             required
-            defaultValue={contentProp || ''}
+            defaultValue={content || ''}
           />
 
           <FormTextarea
@@ -113,6 +118,8 @@ export const ArticleForm = ({
             rows="4"
             cols="30"
             defaultValue={keywordPropSeparated || ''}
+            pattern="[a-zA-Z0-9 ,]+"
+            title="Pouze velka a mala pismena nebo cisla."
           />
 
           <div>
@@ -161,7 +168,9 @@ export const ArticleForm = ({
               label="Název pro abecední řazení"
               type="text"
               id="alphabeticalTitle"
-              defaultValue={alphabeticalTitleProp || ''}
+              defaultValue={alphabeticalTitle || ''}
+              pattern="[a-zA-Z0-9 .]+"
+              title="Pouze velka a mala pismena nebo cisla."
             />
           )}
 
@@ -176,7 +185,7 @@ export const ArticleForm = ({
           />
 
           <Image
-            src={featuredImage || imgPlaceholder}
+            src={featuredImageState || imgPlaceholder}
             width="100"
             height="100"
             alt=""
@@ -188,7 +197,7 @@ export const ArticleForm = ({
             className="mb-6 w-full border-b-2 border-stone-300 bg-light-50 p-2"
             label="Popis obrázku"
             rows="4"
-            defaultValue={altForFeaturedImageProp || ''}
+            defaultValue={altForFeaturedImage || ''}
           />
         </aside>
       </div>

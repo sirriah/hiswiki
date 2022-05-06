@@ -64,7 +64,7 @@ const Article = () => {
         <h1 className="headline--1 underline-large mb-5">{title}</h1>
         <div className="mt-5 flex flex-col-reverse md:flex-row">
           <div className="md:mr-[5%] md:w-[70%]">
-            <p>{content}</p>
+            <p>{decodeURIComponent(content)}</p>
           </div>
 
           <aside className="mt-8 w-full md:m-0 md:w-1/4" aria-label="sidebar">
@@ -72,7 +72,7 @@ const Article = () => {
               <figure>
                 <div className="relative block h-[300px] w-full">
                   <Image
-                    src={featuredImage}
+                    src={decodeURIComponent(featuredImage)}
                     layout="fill"
                     className="relative block"
                     objectFit="contain"
@@ -80,7 +80,7 @@ const Article = () => {
                 </div>
                 {altForFeaturedImage && (
                   <figcaption className="pb-5 text-center text-sm text-dark-300">
-                    {altForFeaturedImage}
+                    {decodeURIComponent(altForFeaturedImage)}
                   </figcaption>
                 )}
               </figure>

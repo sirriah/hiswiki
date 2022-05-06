@@ -31,7 +31,7 @@ const Keyword = () => {
             <ul className="list-disc">
               {articles.map(({ title, link, id }) => (
                 <li className="my-2 " key={id}>
-                  <Link href={`/article/${link}`}>
+                  <Link href={encodeURI(`/article/${link}`)}>
                     <a className="inline-block text-accent-500 underline hover:no-underline">
                       <h2>{title}</h2>
                     </a>

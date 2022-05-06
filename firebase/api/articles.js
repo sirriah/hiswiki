@@ -21,7 +21,10 @@ import { firebase } from '../../firebase/initFirebase';
 
 export const getArticleDetail = async (articleLink) => {
   const articlesCollectionRef = collection(firebase, 'articles');
-  const q = query(articlesCollectionRef, where('link', '==', articleLink));
+  const q = query(
+    articlesCollectionRef,
+    where('link', '==', encodeURIComponent(articleLink)),
+  );
   const dataArticle = await getDocs(q);
   const [transformedData] = transformSnapshot(dataArticle);
 
@@ -71,12 +74,12 @@ export const addNewArticle = async (formData) => {
 
   const payload = {
     title: title || '',
-    content: formData.content || '',
+    content: encodeURIComponent(formData.content) || '',
     alphabeticalTitle: alphabeticalTitle || formData.title,
-    featuredImage: formData.featuredImage || '',
-    link: createSlugLink(formData.title || ''),
+    featuredImage: encodeURIComponent(formData.featuredImage) || '',
+    link: encodeURIComponent(createSlugLink(formData.title)) || '',
     dateOfPublication: new Date(),
-    altForFeaturedImage: formData.altForFeaturedImage || '',
+    altForFeaturedImage: encodeURIComponent(formData.altForFeaturedImage) || '',
     keywords: parseKeywords(formData.keywords) || '',
     portals: formData.portals || '',
   };
@@ -90,10 +93,10 @@ export const editArticle = async (formData) => {
 
   const payload = {
     title: formData.title,
-    content: formData.content,
-    featuredImage: formData.featuredImage,
+    content: encodeURIComponent(formData.content),
+    featuredImage: encodeURIComponent(formData.featuredImage),
     alphabeticalTitle,
-    altForFeaturedImage: formData.altForFeaturedImage,
+    altForFeaturedImage: encodeURIComponent(formData.altForFeaturedImage),
     keywords: parseKeywords(formData.keywords),
     portals: formData.portals,
   };
