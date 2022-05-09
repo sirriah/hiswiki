@@ -8,7 +8,7 @@ import { getArticleDetail } from '../../firebase/api/articles';
 import { Layout } from '../../components/Layout';
 import { PortalLink } from '../../components/PortalLink';
 import { KeywordLink } from '../../components/KeywordLink';
-// import { Loader } from '../../components/Loader';
+import { Loader } from '../../components/Loader';
 import Arrow from '../../public/img/arrow.svg';
 
 const Article = () => {
@@ -34,12 +34,7 @@ const Article = () => {
   }, [articleLink]);
 
   if (!article) {
-    return (
-      <div className="w-100 h-100 flex content-center items-center">
-        loading...
-      </div>
-    );
-    // <Loader />;
+    return <Loader />;
   }
 
   const {
