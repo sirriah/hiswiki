@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 import { ArticleCard } from './../components/home/ArticleCard';
@@ -25,18 +24,14 @@ const Home = () => {
 
   return (
     <LayoutHome>
-      <section className="my-20 px-4 text-center md:px-12 lg:px-24">
+      <section className="my-20 p-4 text-center md:px-12 lg:px-24">
         <h1 className="headline--1 underline-large">HISWIKI</h1>
         <p className="paragraph">Na stránkách je umístěno celkem 153 článků</p>
         <p className="paragraph">
-          Lorem USA dolor sit amet, consectetur adipiscing elit. Praesent
-          egestas, augue elementum elementum facilisis, ligula velit fermentum
-          libero, dictum malesuada justo dui sed sapien. Quisque ac erat
-          scelerisque enim mattis viverra.{' '}
-          <Link href="/article">
-            <a className="link">Pellentesque pulvinar</a>
-          </Link>{' '}
-          ex gravida, consectetur erat et, semper ligula.
+          Stránky Hiswiki slouží jako wikipedie spolku Loděnice v historii, z.s.
+          Jsou zde shromážděny veškeré údaje, které se členům spolku podařilo
+          vypátrat v různých archivech. Jedná se o výsledky dlouhleté činnosti.
+          Součástí jsou fotografie z rodinných arichivů mnoha místních obyvatel.
         </p>
       </section>
 
@@ -88,13 +83,11 @@ const Home = () => {
       </section>
 
       <p className="my-20 mx-0 md:mx-20 lg:mx-36">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum,
-        arcu vel tempus finibus, nulla metus congue lacus, ac vehicula ex nulla
-        non erat. Phasellus ultrices sapien sit amet eros ullamcorper lacinia.
-        Sed at sem facilisis ipsum fermentum pulvinar. Nam volutpat fringilla
-        mi, vitae mollis mi lobortis quis. Vivamus finibus ex est, interdum
-        bibendum dolor consequat in. Duis ut porta nunc. Vivamus tempor accumsan
-        finibus.
+        Loděnice u Berouna je obec s cca 2500 obyvateli. Leží na desátém
+        kilometru dálnice D5. Obcí dále prochází železnice. Místní železniční
+        stanice se stala velmi populární, díky oskarovému snímku Ostře sledované
+        vlaky, který se prakticky celý odehrává na nádraží nebo v jiných částech
+        obce.
       </p>
     </LayoutHome>
   );

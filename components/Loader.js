@@ -1,4 +1,4 @@
-import LoaderCircle from '../public/img/Loader.svg';
+import LoaderCircle from '../public/img/loader.svg';
 
 export const Loader = () => (
   <div className="absolute flex h-screen w-screen justify-center">
