@@ -34,7 +34,7 @@ export const ArticleForm = ({
   const router = useRouter();
 
   const [isTitleDifferent, setIsTitleDifferent] = useState(
-    alphabeticalTitle && alphabeticalTitle !== title,
+    !!alphabeticalTitle && alphabeticalTitle !== title,
   );
 
   const [featuredImageState, setFeaturedImageState] = useState(
@@ -95,7 +95,7 @@ export const ArticleForm = ({
             type="text"
             required
             defaultValue={title || ''}
-            pattern="[a-zA-Z0-9 .]+"
+            pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
             title="Pouze velka a mala pismena a cisla."
           />
 
@@ -118,7 +118,7 @@ export const ArticleForm = ({
             rows="4"
             cols="30"
             defaultValue={keywordPropSeparated || ''}
-            pattern="[a-zA-Z0-9 ,]+"
+            pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
             title="Pouze velka a mala pismena nebo cisla."
           />
 
@@ -137,8 +137,6 @@ export const ArticleForm = ({
                     type="checkbox"
                     id={`portals[${index}]`}
                     value={item}
-                    // checked={portalsCheckboxes[index]}
-                    // onChange={() => checkboxesOnChangeHandler(index)}
                     defaultChecked={transformedPortals[index]}
                   />
                   <label htmlFor={`portals-${index}`}>{item}</label>
@@ -153,7 +151,6 @@ export const ArticleForm = ({
             id="isTitleDifferent"
             checked={isTitleDifferent}
             onChange={handleTitleCheckboxChange}
-            defaultChecked={isTitleDifferent || false}
           />
           <label
             className="my-4 mt-4 ml-3 text-sm text-stone-700"
@@ -170,7 +167,7 @@ export const ArticleForm = ({
               type="text"
               id="alphabeticalTitle"
               defaultValue={alphabeticalTitle || ''}
-              pattern="[a-zA-Z0-9 .]+"
+              pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
               title="Pouze velka a mala pismena nebo cisla."
             />
           )}
@@ -181,7 +178,7 @@ export const ArticleForm = ({
             id="featuredImage"
             label="Hlavní obrázek - URL"
             type="text"
-            value={featuredImage}
+            value={featuredImageState}
             onChange={handleImageChange}
           />
 
@@ -189,7 +186,7 @@ export const ArticleForm = ({
             src={featuredImageState || imgPlaceholder}
             width="100"
             height="100"
-            alt=""
+            alt={altForFeaturedImage || ''}
           />
 
           <FormTextarea

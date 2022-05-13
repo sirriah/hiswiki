@@ -73,10 +73,14 @@ const Article = () => {
                     layout="fill"
                     className="relative block"
                     objectFit="contain"
+                    aria-labelledby="freaturedImageAlt"
                   />
                 </div>
                 {altForFeaturedImage && (
-                  <figcaption className="pb-5 text-center text-sm text-dark-300">
+                  <figcaption
+                    id="freaturedImageAlt"
+                    className="pb-5 text-center text-sm text-dark-300"
+                  >
                     {decodeURIComponent(altForFeaturedImage)}
                   </figcaption>
                 )}
@@ -89,7 +93,6 @@ const Article = () => {
                   className="flex cursor-pointer justify-between bg-accent-200 p-3 font-bold md:hidden"
                 >
                   <h2>
-                    {' '}
                     {!isDetailsOpen ? 'Zobrazit detaily' : 'Skrýt detaily'}
                   </h2>
                   <Arrow
@@ -109,12 +112,12 @@ const Article = () => {
                   <h3 className="py-3 font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900">
                     Detaily
                   </h3>
-                  {Object.entries(details).map((item) => (
-                    <div key={item[0]} className="bg-stone-100 p-2">
+                  {Object.entries(details).map(({ detailId, value }) => (
+                    <div key={detailId} className="bg-stone-100 p-2">
                       <h4 className="font-bold tracking-wide text-accent-600">
-                        {item[0]}
+                        {detailId}
                       </h4>
-                      <p className="text-dark-600">{item[1]}</p>
+                      <p className="text-dark-600">{value}</p>
                     </div>
                   ))}
                 </section>

@@ -4,7 +4,7 @@ import { ArticleCard } from './../components/home/ArticleCard';
 import { FeaturedArticle } from '../components/home/FeaturedArticle';
 import { LayoutHome } from '../components/home/LayoutHome';
 import { PortalLink } from '../components/PortalLink';
-import { getListOfLastArticles } from '../firebase/api/articles';
+import { getListOfAllArticlesByDate } from '../firebase/api/articles';
 const portals = [
   'Osoby',
   'Stavby',
@@ -16,17 +16,19 @@ const portals = [
 ];
 
 const Home = () => {
-  const [latestArticles, setLatestArticles] = useState([]);
+  const [allArticles, setAllArticles] = useState([]);
 
   useEffect(() => {
-    getListOfLastArticles().then((value) => setLatestArticles(value));
+    getListOfAllArticlesByDate().then((value) => setAllArticles(value));
   }, []);
 
   return (
     <LayoutHome>
-      <section className="my-20 p-4 text-center md:px-12 lg:px-24">
+      <section className="my-20 px-4 text-center md:px-12 lg:px-24">
         <h1 className="headline--1 underline-large">HISWIKI</h1>
-        <p className="paragraph">Na stránkách je umístěno celkem 153 článků</p>
+        <p className="paragraph mt-6">
+          Na stránkách je umístěno celkem {allArticles.length} článků
+        </p>
         <p className="paragraph">
           Stránky Hiswiki slouží jako wikipedie spolku Loděnice v historii, z.s.
           Jsou zde shromážděny veškeré údaje, které se členům spolku podařilo
@@ -47,38 +49,50 @@ const Home = () => {
         </div>
       </section>
 
-      <h2 className="underline-medium text-center">Článek dne</h2>
-
-      <FeaturedArticle />
-
       <h2 className="underline-medium pt-12 text-center">Nejnovější články</h2>
+      {allArticles
+        .slice(0, 1)
+        .map(
+          ({ id, title, content, link, featuredImage, dateOfPublication }) => (
+            <FeaturedArticle
+              key={id}
+              title={title}
+              content={decodeURIComponent(content)}
+              link={decodeURIComponent(link)}
+              featuredImage={decodeURIComponent(featuredImage)}
+              dateOfPublication={dateOfPublication}
+            />
+          ),
+        )}
 
       <section className="w-full justify-center md:flex">
         <div className="w-full space-x-4 md:flex lg:w-[1088px]">
-          {latestArticles.map(
-            ({
-              id,
-              link,
-              title,
-              dateOfPublication,
-              featuredImage,
-              details,
-              keywords,
-              portals,
-            }) => (
-              <ArticleCard
-                key={id}
-                imageLink={featuredImage}
-                title={title}
-                date={dateOfPublication}
-                link={link}
-                details={details}
-                keywords={keywords}
-                portals={portals}
-                author="Tereza Fatková"
-              />
-            ),
-          )}
+          {allArticles
+            .slice(1, 4)
+            .map(
+              ({
+                id,
+                link,
+                title,
+                dateOfPublication,
+                featuredImage,
+                details,
+                keywords,
+                portals,
+              }) => (
+                <ArticleCard
+                  key={id}
+                  featuredImage={decodeURIComponent(featuredImage)}
+                  title={title}
+                  dateOfPublication={dateOfPublication}
+                  link={decodeURIComponent(link)}
+                  details={details}
+                  keywords={keywords}
+                  portals={portals}
+                  author="Tereza Fatková"
+                />
+              ),
+            )}
         </div>
       </section>
 

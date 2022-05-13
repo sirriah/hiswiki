@@ -33,10 +33,10 @@ export const groupByFirstChar = (array, groupProperty) =>
     const firstChar = item[groupProperty].charAt(0);
 
     if (!acc[firstChar]) {
-      acc[firstChar] = []; // mutation
+      acc[firstChar] = [];
     }
 
-    acc[firstChar].push(item); // even this mutates
+    acc[firstChar].push(item);
 
     return acc;
   }, {});
@@ -52,20 +52,11 @@ export const parseKeywords = (keywordsString) => {
   if (keywordsString) {
     const arrayKeywords = keywordsString.split(',');
 
-    arrayKeywords.forEach((item, index) => {
-      if (item.length < 2) {
-        arrayKeywords.splice(index, 1);
-      }
-    });
+    const trimmedArray = arrayKeywords.map((item) =>
+      transformFirstCharToUpperCase(item.trim()),
+    );
 
-    return arrayKeywords.map((item) => {
-      const trimItem = item.trim();
-
-      const uppercaseItem =
-        trimItem.charAt(0).toUpperCase() + trimItem.slice(1);
-
-      return uppercaseItem;
-    });
+    return trimmedArray.filter((item) => item.length > 0);
   }
 };
 
@@ -84,4 +75,6 @@ export const transformFirstCharToUpperCase = (string) => {
   if (string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  return string;
 };
