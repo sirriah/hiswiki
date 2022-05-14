@@ -23,11 +23,10 @@ export const FormInput = ({
     if (onChange) {
       onChange(e);
     } else {
-      if (pattern) {
-        if (e.target.value) {
-          setIsValid(regex.test(e.target.value));
-        }
+      if (pattern && e.target.value) {
+        setIsValid(regex.test(e.target.value));
       }
+
       setUserInput(e.target.value);
     }
   };
@@ -37,7 +36,7 @@ export const FormInput = ({
       {label && (
         <FormLabel
           labelClassName={labelClassName}
-          elementsId={props.id}
+          id={props.id}
           required={required}
           labelName={label}
           isValid={isValid}
@@ -49,11 +48,12 @@ export const FormInput = ({
         required={required}
         onChange={handleInputChange}
         value={value === undefined ? userInput : value}
-        className={
-          classNames({
+        className={classNames(
+          {
             'outline outline-2 outline-red-600': !isValid,
-          }) + ` ${className}`
-        }
+          },
+          { [className]: className },
+        )}
       />
     </>
   );

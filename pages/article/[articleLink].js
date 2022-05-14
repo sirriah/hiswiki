@@ -16,7 +16,6 @@ const Article = () => {
   const { articleLink } = router.query;
 
   const [article, setArticle] = useState();
-
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   const openDetailsHandler = () => {

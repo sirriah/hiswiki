@@ -5,16 +5,18 @@ import { Layout } from '../../components/Layout';
 
 const Portal = () => {
   const router = useRouter();
+
   const [nameRouter, setNameRouter] = useState();
 
   useEffect(() => {
-    if (router.isReady) {
-      const { portalLink } = router.query;
-      setNameRouter(portalLink);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const { portalLink } = router.query;
+    setNameRouter(portalLink);
+  }, [router]);
 
-  return <Layout>{nameRouter}</Layout>;
+  return (
+    <Layout>
+      <h1 className="headline--1 underline-large">{nameRouter}</h1>
+    </Layout>
+  );
 };
 export default Portal;

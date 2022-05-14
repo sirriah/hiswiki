@@ -19,7 +19,11 @@ const Home = () => {
   const [allArticles, setAllArticles] = useState([]);
 
   useEffect(() => {
-    getListOfAllArticlesByDate().then((value) => setAllArticles(value));
+    const handleFetching = async () => {
+      setAllArticles(await getListOfAllArticlesByDate());
+    };
+
+    handleFetching();
   }, []);
 
   return (
