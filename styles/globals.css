@@ -57,27 +57,27 @@ body {
 
 @layer base {
   .headline--1 {
-    @apply font-yrsa font-bold tracking-wide text-3xl md:text-4xl leading-none px-4 lg:mx-0
+    @apply px-4 font-yrsa text-3xl font-bold leading-none tracking-wide md:text-4xl lg:mx-0
     lg:text-4xl;
   }
 
   .headline--2 {
-    @apply font-yrsa font-semibold text-4xl pt-4 pb-2 lg:px-0;
+    @apply pb-2 font-yrsa text-4xl font-semibold lg:px-0;
   }
 
   .headline--3 {
-    @apply font-yrsa font-medium text-3xl pt-4 pb-2 lg:px-0;
+    @apply pb-2 font-yrsa text-3xl  font-medium lg:px-0;
   }
 
   .headline--4 {
-    @apply font-yrsa font-medium text-2xl pt-4 pb-2 lg:px-0;
+    @apply pb-2 font-yrsa text-2xl  font-medium lg:px-0;
   }
 
   .paragraph {
-    @apply text-dark-600 font-normal leading-relaxed pt-4 pb-2 lg:px-0;
+    @apply pb-2 font-normal leading-relaxed  text-dark-600 lg:px-0;
   }
 
   .underline-medium {
-    @apply font-yrsa font-medium uppercase tracking-widest shadow-neutral-900 text-center text-lg mb-5;
+    @apply mb-5  text-center font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900;
   }
 }

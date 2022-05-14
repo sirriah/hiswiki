@@ -2,16 +2,10 @@ import Link from 'next/link';
 
 import Weather from '../public/img/weather.svg';
 
-const menuItem = [
-  'Hlavní stránka',
-  'Vyhledávání',
-  'Přidat článek',
-  'Váš profil',
-  'Odhlásit se',
-];
+const menuItem = ['Přidat článek', 'Váš profil', 'Odhlásit se'];
 
 export const Footer = () => (
-  <footer className="mt-20 w-full bg-dark-300 text-white">
+  <footer className="mt-auto w-full bg-dark-300 text-white">
     <div className="mx-auto grid max-w-screen-xl grid-cols-[2fr_1fr] p-6 lg:grid-cols-[3fr_1fr]">
       <nav>
         <ul className="flex flex-col lg:flex-row">
