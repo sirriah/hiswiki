@@ -16,7 +16,7 @@ export const FormInput = ({
   className,
   ...props
 }) => {
-  const [userInput, setUserInput] = useState(defaultValue);
+  const [userInput, setUserInput] = useState(defaultValue || '');
   const [isValid, setIsValid] = useState(true);
 
   const handleInputChange = (e) => {

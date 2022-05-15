@@ -6,6 +6,7 @@ import imgPlaceholder from '../public/img/img_placeholder.png';
 import { FormInput } from './Form/FormInput';
 import { FormTextarea } from './Form/FormTextarea';
 import { FormCheckbox } from './Form/FormCheckbox';
+import { Details } from './Details';
 
 const listOfPortalsValues = [
   'Osoby',
@@ -133,13 +134,18 @@ export const ArticleForm = ({
               {listOfPortalsValues.map((item, index) => (
                 <li key={index}>
                   <FormCheckbox
-                    className="mr-3 mb-2"
+                    className="mr-3 mb-2 cursor-pointer"
                     type="checkbox"
                     id={`portals[${index}]`}
                     value={item}
                     defaultChecked={transformedPortals[index]}
                   />
-                  <label htmlFor={`portals-${index}`}>{item}</label>
+                  <label
+                    className="cursor-pointer"
+                    htmlFor={`portals[${index}]`}
+                  >
+                    {item}
+                  </label>
                 </li>
               ))}
             </ul>
@@ -197,6 +203,8 @@ export const ArticleForm = ({
             rows="4"
             defaultValue={altForFeaturedImage || ''}
           />
+          <label className="headline--4">Detaily</label>
+          <Details />
         </aside>
       </div>
       <button

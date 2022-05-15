@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { editArticle, getArticleDetail } from '../../../firebase/api/articles';
 import { ArticleForm } from '../../../components/ArticleForm';
 import { Layout } from '../../../components/Layout';
+import { Loader } from '../../../components/Loader';
 
 const EditArticle = () => {
   const router = useRouter();
@@ -22,11 +23,7 @@ const EditArticle = () => {
   }, [articleLink]);
 
   if (!article) {
-    return (
-      <div className="w-100 h-100 flex content-center items-center">
-        loading...
-      </div>
-    );
+    return <Loader />;
   }
 
   const {

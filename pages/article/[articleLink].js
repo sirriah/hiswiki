@@ -111,12 +111,12 @@ const Article = () => {
                   <h3 className="py-3 font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900">
                     Detaily
                   </h3>
-                  {Object.entries(details).map(({ detailId, value }) => (
-                    <div key={detailId} className="bg-stone-100 p-2">
+                  {Object.entries(details).map((item) => (
+                    <div key={item[0]} className="bg-stone-100 p-2">
                       <h4 className="font-bold tracking-wide text-accent-600">
-                        {detailId}
+                        {item[0]}
                       </h4>
-                      <p className="text-dark-600">{value}</p>
+                      <p className="text-dark-600">{item[1]}</p>
                     </div>
                   ))}
                 </section>

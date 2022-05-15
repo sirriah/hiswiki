@@ -18,6 +18,7 @@ module.exports = {
       },
       colors: {
         accent: {
+          50: '#F2EEE9',
           200: '#FFE8CC',
           500: '#B46406',
           600: '#854802',
