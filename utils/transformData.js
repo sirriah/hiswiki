@@ -58,6 +58,8 @@ export const parseKeywords = (keywordsString) => {
 
     return trimmedArray.filter((item) => item.length > 0);
   }
+
+  return '';
 };
 
 export const setKeywordsToString = (dataArticle) =>
@@ -91,6 +93,19 @@ export const transformDetailsToArray = (formDataDetailsArray) => {
 
     return acc;
   }, {});
+
+  return array;
+};
+
+export const transformDetailsToFields = (formDataDetailsArray) => {
+  const array = Object.entries(formDataDetailsArray).reduce((acc, item) => {
+    const helpArray = {};
+    helpArray.fieldName = item[0];
+    helpArray.fieldContent = item[1];
+    acc.push(helpArray);
+
+    return acc;
+  }, []);
 
   return array;
 };

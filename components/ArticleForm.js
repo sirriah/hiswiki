@@ -31,6 +31,7 @@ export const ArticleForm = ({
   keywords,
   portals,
   link,
+  details,
 }) => {
   // const router = useRouter();
 
@@ -42,7 +43,7 @@ export const ArticleForm = ({
     featuredImage || '',
   );
 
-  const [details, setDetails] = useState([]);
+  const [detailsState, setDetailsState] = useState([]);
 
   const handleTitleCheckboxChange = () => {
     setIsTitleDifferent(!isTitleDifferent);
@@ -53,7 +54,7 @@ export const ArticleForm = ({
   };
 
   const handleDetailsData = (data) => {
-    setDetails(data);
+    setDetailsState(data);
   };
 
   const formSubmit = async (e) => {
@@ -73,7 +74,7 @@ export const ArticleForm = ({
       id: id || '',
       link: link || '',
       portals,
-      details,
+      details: detailsState,
     };
 
     await articleCallback(formData);
@@ -211,7 +212,11 @@ export const ArticleForm = ({
             defaultValue={altForFeaturedImage || ''}
           />
           <label className="headline--4">Detaily</label>
-          <Details id="details" detailsDataCallback={handleDetailsData} />
+          <Details
+            id="details"
+            detailsDataCallback={handleDetailsData}
+            defaultValue={details}
+          />
         </aside>
       </div>
       <button

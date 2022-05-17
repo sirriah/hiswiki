@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 
+import { transformDetailsToFields } from './../utils/transformData';
 import { FormInput } from './Form/FormInput';
-export const Details = ({ detailsDataCallback }) => {
-  const [detailFields, setDetailFields] = useState([]);
+export const Details = ({ detailsDataCallback, defaultValue }) => {
+  const [detailFields, setDetailFields] = useState(
+    transformDetailsToFields(defaultValue) || [],
+  );
 
   const handleAddFields = (event) => {
     event.preventDefault();

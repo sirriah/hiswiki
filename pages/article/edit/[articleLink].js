@@ -36,6 +36,7 @@ const EditArticle = () => {
     keywords,
     portals,
     link,
+    details,
   } = article;
 
   return (
@@ -52,6 +53,7 @@ const EditArticle = () => {
         keywords={keywords}
         portals={portals}
         link={link}
+        details={details}
       />
     </Layout>
   );
