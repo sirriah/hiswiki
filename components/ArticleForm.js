@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
 import imgPlaceholder from '../public/img/img_placeholder.png';
 import { FormInput } from './Form/FormInput';
@@ -32,7 +32,7 @@ export const ArticleForm = ({
   portals,
   link,
 }) => {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [isTitleDifferent, setIsTitleDifferent] = useState(
     !!alphabeticalTitle && alphabeticalTitle !== title,
@@ -42,12 +42,18 @@ export const ArticleForm = ({
     featuredImage || '',
   );
 
+  const [details, setDetails] = useState([]);
+
   const handleTitleCheckboxChange = () => {
     setIsTitleDifferent(!isTitleDifferent);
   };
 
   const handleImageChange = (e) => {
     setFeaturedImageState(e.target.value);
+  };
+
+  const handleDetailsData = (data) => {
+    setDetails(data);
   };
 
   const formSubmit = async (e) => {
@@ -67,11 +73,12 @@ export const ArticleForm = ({
       id: id || '',
       link: link || '',
       portals,
+      details,
     };
 
     await articleCallback(formData);
 
-    router.push('/');
+    // router.push('/');
   };
 
   const keywordPropSeparated = useMemo(
@@ -204,7 +211,7 @@ export const ArticleForm = ({
             defaultValue={altForFeaturedImage || ''}
           />
           <label className="headline--4">Detaily</label>
-          <Details />
+          <Details id="details" detailsDataCallback={handleDetailsData} />
         </aside>
       </div>
       <button

@@ -78,3 +78,19 @@ export const transformFirstCharToUpperCase = (string) => {
 
   return string;
 };
+
+export const transformDetailsToArray = (formDataDetailsArray) => {
+  const array = formDataDetailsArray.reduce((acc, item) => {
+    const fieldName = item.fieldName;
+
+    if (!acc[fieldName]) {
+      acc[fieldName] = '';
+    }
+
+    acc[fieldName] = item.fieldContent;
+
+    return acc;
+  }, {});
+
+  return array;
+};

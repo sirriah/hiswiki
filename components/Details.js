@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { FormInput } from './Form/FormInput';
-export const Details = () => {
+export const Details = ({ detailsDataCallback }) => {
   const [detailFields, setDetailFields] = useState([]);
 
-  const handleAddFields = () => {
+  const handleAddFields = (event) => {
+    event.preventDefault();
     setDetailFields([...detailFields, { fieldName: '', fieldContent: '' }]);
   };
 
-  const handleDeleteFields = (index) => {
+  const handleDeleteFields = (index, event) => {
+    event.preventDefault();
     const data = [...detailFields];
     data.splice(index, 1);
     setDetailFields(data);
@@ -20,8 +22,10 @@ export const Details = () => {
     setDetailFields(data);
   };
 
-  // eslint-disable-next-line no-console
-  console.log(detailFields);
+  useEffect(() => {
+    detailsDataCallback(detailFields);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [detailFields]);
 
   return (
     <ol className="list-inside list-decimal">
@@ -49,7 +53,7 @@ export const Details = () => {
           <div className="flex">
             <button
               className="bg-red-700 p-2 text-white"
-              onClick={() => handleDeleteFields(index)}
+              onClick={(event) => handleDeleteFields(index, event)}
             >
               smazat
             </button>
