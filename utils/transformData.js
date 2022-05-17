@@ -98,14 +98,18 @@ export const transformDetailsToArray = (formDataDetailsArray) => {
 };
 
 export const transformDetailsToFields = (formDataDetailsArray) => {
-  const array = Object.entries(formDataDetailsArray).reduce((acc, item) => {
-    const helpArray = {};
-    helpArray.fieldName = item[0];
-    helpArray.fieldContent = item[1];
-    acc.push(helpArray);
+  if (formDataDetailsArray) {
+    const array = Object.entries(formDataDetailsArray).reduce((acc, item) => {
+      const helpArray = {};
+      helpArray.fieldName = item[0];
+      helpArray.fieldContent = item[1];
+      acc.push(helpArray);
 
-    return acc;
-  }, []);
+      return acc;
+    }, []);
 
-  return array;
+    return array;
+  }
+
+  return '';
 };
