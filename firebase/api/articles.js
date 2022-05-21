@@ -16,7 +16,6 @@ import {
   createSlugLink,
   parseKeywords,
   transformFirstCharToUpperCase,
-  transformDetailsToArray,
 } from '../../utils/transformData';
 import { firebase } from '../../firebase/initFirebase';
 
@@ -72,7 +71,6 @@ export const addNewArticle = async (formData) => {
   const alphabeticalTitle = transformFirstCharToUpperCase(
     formData.alphabeticalTitle,
   );
-  const details = transformDetailsToArray(formData.details);
 
   const payload = {
     title: title || '',
@@ -84,7 +82,7 @@ export const addNewArticle = async (formData) => {
     altForFeaturedImage: encodeURIComponent(formData.altForFeaturedImage) || '',
     keywords: parseKeywords(formData.keywords) || '',
     portals: formData.portals || '',
-    details: details || '',
+    details: formData.details || '',
   };
 
   const articlesCollectionRef = collection(firebase, 'articles');
@@ -93,7 +91,6 @@ export const addNewArticle = async (formData) => {
 
 export const editArticle = async (formData) => {
   const alphabeticalTitle = formData.alphabeticalTitle || formData.title;
-  const details = transformDetailsToArray(formData.details);
 
   const payload = {
     title: formData.title,
@@ -103,7 +100,7 @@ export const editArticle = async (formData) => {
     altForFeaturedImage: encodeURIComponent(formData.altForFeaturedImage),
     keywords: parseKeywords(formData.keywords),
     portals: formData.portals,
-    details,
+    details: formData.details,
   };
 
   const docRef = doc(firebase, 'articles', formData.id);
