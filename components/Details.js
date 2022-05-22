@@ -19,10 +19,11 @@ export const Details = ({ detailsDataCallback, defaultValue }) => {
     setDetailFields(newData);
   };
 
-  const handleFormChange = (index, event) => {
-    const data = [...detailFields];
-    data[index][event.target.name] = event.target.value;
-    setDetailFields(data);
+  const handleFormChange = (index, { target }) => {
+    const newData = detailFields.map((item, i) =>
+      index === i ? { ...item, [target.name]: target.value } : item,
+    );
+    setDetailFields(newData);
   };
 
   return (

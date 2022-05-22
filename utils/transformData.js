@@ -59,7 +59,7 @@ export const parseKeywords = (keywordsString) => {
     return trimmedArray.filter((item) => item.length > 0);
   }
 
-  return '';
+  return [];
 };
 
 export const setKeywordsToString = (dataArticle) =>
