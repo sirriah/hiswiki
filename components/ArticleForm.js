@@ -6,6 +6,7 @@ import imgPlaceholder from '../public/img/img_placeholder.png';
 import { FormInput } from './Form/FormInput';
 import { FormTextarea } from './Form/FormTextarea';
 import { FormCheckbox } from './Form/FormCheckbox';
+import { Details } from './Details';
 
 const listOfPortalsValues = [
   'Osoby',
@@ -30,16 +31,17 @@ export const ArticleForm = ({
   keywords,
   portals,
   link,
+  details,
 }) => {
   const router = useRouter();
 
   const [isTitleDifferent, setIsTitleDifferent] = useState(
     !!alphabeticalTitle && alphabeticalTitle !== title,
   );
-
   const [featuredImageState, setFeaturedImageState] = useState(
     featuredImage || '',
   );
+  const [detailsState, setDetailsState] = useState([]);
 
   const handleTitleCheckboxChange = () => {
     setIsTitleDifferent(!isTitleDifferent);
@@ -66,6 +68,7 @@ export const ArticleForm = ({
       id: id || '',
       link: link || '',
       portals,
+      details: detailsState,
     };
 
     await articleCallback(formData);
@@ -96,7 +99,7 @@ export const ArticleForm = ({
             required
             defaultValue={title || ''}
             pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
-            title="Pouze velka a mala pismena a cisla."
+            title="Pouze velká a malá písmena a čísla."
           />
 
           <FormTextarea
@@ -119,7 +122,7 @@ export const ArticleForm = ({
             cols="30"
             defaultValue={keywordPropSeparated || ''}
             pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
-            title="Pouze velka a mala pismena nebo cisla."
+            title="Pouze velká a malá písmena nebo čísla."
           />
 
           <div>
@@ -133,13 +136,18 @@ export const ArticleForm = ({
               {listOfPortalsValues.map((item, index) => (
                 <li key={index}>
                   <FormCheckbox
-                    className="mr-3 mb-2"
+                    className="mr-3 mb-2 cursor-pointer"
                     type="checkbox"
                     id={`portals[${index}]`}
                     value={item}
                     defaultChecked={transformedPortals[index]}
                   />
-                  <label htmlFor={`portals-${index}`}>{item}</label>
+                  <label
+                    className="cursor-pointer"
+                    htmlFor={`portals[${index}]`}
+                  >
+                    {item}
+                  </label>
                 </li>
               ))}
             </ul>
@@ -196,6 +204,12 @@ export const ArticleForm = ({
             label="Popis obrázku"
             rows="4"
             defaultValue={altForFeaturedImage || ''}
+          />
+          <label className="headline--4">Detaily</label>
+          <Details
+            id="details"
+            detailsDataCallback={setDetailsState}
+            defaultValue={details}
           />
         </aside>
       </div>

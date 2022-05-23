@@ -82,6 +82,7 @@ export const addNewArticle = async (formData) => {
     altForFeaturedImage: encodeURIComponent(formData.altForFeaturedImage) || '',
     keywords: parseKeywords(formData.keywords) || '',
     portals: formData.portals || '',
+    details: formData.details || '',
   };
 
   const articlesCollectionRef = collection(firebase, 'articles');
@@ -99,6 +100,7 @@ export const editArticle = async (formData) => {
     altForFeaturedImage: encodeURIComponent(formData.altForFeaturedImage),
     keywords: parseKeywords(formData.keywords),
     portals: formData.portals,
+    details: formData.details,
   };
 
   const docRef = doc(firebase, 'articles', formData.id);
