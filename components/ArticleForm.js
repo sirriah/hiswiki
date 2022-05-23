@@ -99,7 +99,7 @@ export const ArticleForm = ({
             required
             defaultValue={title || ''}
             pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
-            title="Pouze velka a mala pismena a cisla."
+            title="Pouze velká a malá písmena a čísla."
           />
 
           <FormTextarea
@@ -122,7 +122,7 @@ export const ArticleForm = ({
             cols="30"
             defaultValue={keywordPropSeparated || ''}
             pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
-            title="Pouze velka a mala pismena nebo cisla."
+            title="Pouze velká a malá písmena nebo čísla."
           />
 
           <div>

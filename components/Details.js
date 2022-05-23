@@ -36,8 +36,10 @@ export const Details = ({ detailsDataCallback, defaultValue }) => {
             labelClassName="mt-6 mb-1 block text-sm text-stone-700"
             className="mb-4 block w-full border-b-2 border-stone-300 bg-white p-2"
             value={fieldName}
+            pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
             onChange={(event) => handleFormChange(index, event)}
             id={`fieldName[${index}]`}
+            title="Pouze velká a malá písmena a čísla."
           />
           <FormInput
             label="Obsah"
@@ -45,8 +47,10 @@ export const Details = ({ detailsDataCallback, defaultValue }) => {
             labelClassName="mt-6 mb-1 block text-sm text-stone-700"
             className="mb-4 block w-full border-b-2 border-stone-300 bg-white p-2"
             value={fieldContent}
+            pattern="[a-zA-Zá-žÁ-Ž0-9 .]+"
             onChange={(event) => handleFormChange(index, event)}
             id={`fieldContent[${index}]`}
+            title="Pouze velká a malá písmena a čísla."
           />
 
           <div className="flex">
