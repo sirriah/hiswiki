@@ -1,24 +1,24 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Layout } from '../components/Layout';
 // import { FormInput } from '../components/Form/FormInput';
 import { useAuth } from '../contexts/AuthContext';
+import { FormInput } from '../components/Form/FormInput';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
   const router = useRouter();
   const { login, currentUser, logout } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(e.target.email.value, e.target.passwd.value);
       router.push('/');
     } catch {
       alert('chyba pri prihlasovani');
@@ -41,22 +41,20 @@ const Login = () => {
         <h1 className="headline--3">Přihlášení</h1>
         <div>
           <form onSubmit={handleSubmit}>
-            <input
+            <FormInput
               type="text"
               label="E-mail"
               id="email"
-              placeholder="email"
+              placeholder="Email"
               defaultValue=""
-              ref={emailRef}
               className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
             />
             <input
               type="password"
               label="Heslo"
               id="passwd"
-              placeholder="passwd"
+              placeholder="Heslo"
               defaultValue=""
-              ref={passwordRef}
               className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
             />
 
