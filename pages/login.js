@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Layout } from '../components/Layout';
 // import { FormInput } from '../components/Form/FormInput';
@@ -7,8 +8,10 @@ import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+
   const emailRef = useRef();
   const passwordRef = useRef();
+  const router = useRouter();
   const { login, currentUser, logout } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -16,6 +19,7 @@ const Login = () => {
     try {
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      router.push('/');
     } catch {
       alert('chyba pri prihlasovani');
     }
@@ -25,6 +29,7 @@ const Login = () => {
   const handleLogout = async () => {
     try {
       await logout();
+      router.push('/');
     } catch {
       alert('Chyba pri odhlaseni');
     }

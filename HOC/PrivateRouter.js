@@ -1,19 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { AuthContext } from '../contexts/AuthContext';
+import { Loader } from '../components/Loader';
 
 export const PrivateRouter = ({ children }) => {
   const { currentUser } = useContext(AuthContext);
   const router = useRouter();
 
-  if (currentUser) {
-    return <>{children}</>;
-  } else {
-    if (router.isReady) {
+  useEffect(() => {
+    if (currentUser === null) {
       router.push('/login');
     }
+  }, [currentUser, router]);
 
-    return <></>;
+  const initialLoad = currentUser === undefined;
+
+  if (initialLoad) {
+    return <Loader />;
   }
+
+  if (currentUser) {
+    return <>{children}</>;
+  }
+
+  return null;
 };

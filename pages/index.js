@@ -5,6 +5,7 @@ import { FeaturedArticle } from '../components/home/FeaturedArticle';
 import { LayoutHome } from '../components/home/LayoutHome';
 import { PortalLink } from '../components/PortalLink';
 import { getListOfAllArticlesByDate } from '../firebase/api/articles';
+
 const portals = [
   'Osoby',
   'Stavby',
