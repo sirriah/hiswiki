@@ -10,7 +10,9 @@ export const PrivateRouter = ({ children }) => {
   if (currentUser) {
     return <>{children}</>;
   } else {
-    router.push('/login');
+    if (router.isReady) {
+      router.push('/login');
+    }
 
     return <></>;
   }
