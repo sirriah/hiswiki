@@ -1,7 +1,7 @@
 import { ArticleForm } from '../../components/ArticleForm';
 import { Layout } from '../../components/Layout';
 import { addNewArticle } from '../../firebase/api/articles';
-import PrivateRouter from '../../HOC/PrivateRouter';
+import { PrivateRouter } from '../../HOC/PrivateRouter';
 
 const NewArticle = () => (
   <PrivateRouter>

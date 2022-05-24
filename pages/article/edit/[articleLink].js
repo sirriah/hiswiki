@@ -5,7 +5,7 @@ import { editArticle, getArticleDetail } from '../../../firebase/api/articles';
 import { ArticleForm } from '../../../components/ArticleForm';
 import { Layout } from '../../../components/Layout';
 import { Loader } from '../../../components/Loader';
-import PrivateRouter from '../../../HOC/PrivateRouter';
+import { PrivateRouter } from '../../../HOC/PrivateRouter';
 
 const EditArticle = () => {
   const router = useRouter();
