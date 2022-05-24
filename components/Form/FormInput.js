@@ -13,6 +13,7 @@ export const FormInput = ({
   required,
   value,
   pattern,
+  // reference,
   className,
   ...props
 }) => {
@@ -48,6 +49,7 @@ export const FormInput = ({
         required={required}
         onChange={handleInputChange}
         value={value === undefined ? userInput : value}
+        // ref={reference === undefined ? '' : reference}
         className={classNames(
           {
             'outline outline-2 outline-red-600': !isValid,

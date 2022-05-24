@@ -5,6 +5,7 @@ import { editArticle, getArticleDetail } from '../../../firebase/api/articles';
 import { ArticleForm } from '../../../components/ArticleForm';
 import { Layout } from '../../../components/Layout';
 import { Loader } from '../../../components/Loader';
+import PrivateRouter from '../../../HOC/PrivateRouter';
 
 const EditArticle = () => {
   const router = useRouter();
@@ -40,22 +41,24 @@ const EditArticle = () => {
   } = article;
 
   return (
-    <Layout>
-      <h1 className="headline--1 underline-large">Editace článku</h1>
-      <ArticleForm
-        title={title}
-        alphabeticalTitle={alphabeticalTitle}
-        content={decodeURIComponent(content)}
-        id={id}
-        articleCallback={editArticle}
-        featuredImage={decodeURIComponent(featuredImage)}
-        altForFeaturedImage={decodeURIComponent(altForFeaturedImage)}
-        keywords={keywords}
-        portals={portals}
-        link={link}
-        details={details}
-      />
-    </Layout>
+    <PrivateRouter>
+      <Layout>
+        <h1 className="headline--1 underline-large">Editace článku</h1>
+        <ArticleForm
+          title={title}
+          alphabeticalTitle={alphabeticalTitle}
+          content={decodeURIComponent(content)}
+          id={id}
+          articleCallback={editArticle}
+          featuredImage={decodeURIComponent(featuredImage)}
+          altForFeaturedImage={decodeURIComponent(altForFeaturedImage)}
+          keywords={keywords}
+          portals={portals}
+          link={link}
+          details={details}
+        />
+      </Layout>
+    </PrivateRouter>
   );
 };
 

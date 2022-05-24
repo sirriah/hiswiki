@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import classNames from 'classnames';
 
-import profilePic from '../public/img/profile.jpg';
+import { useAuth } from '../contexts/AuthContext';
+// import profilePic from '../public/img/profile.jpg';
 
 const burgerMenuStyle =
   'absolute right-2 block h-[2px] w-[26px] bg-slate-500 transition duration-300 ease-in-out';
@@ -13,6 +14,15 @@ const menuLinkStyle =
 
 export const Navigation = ({ isScrolledDown }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { currentUser, logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch {
+      alert('Chyba pri odhlaseni');
+    }
+  };
 
   const hamburgerMenuHandler = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -60,34 +70,58 @@ export const Navigation = ({ isScrolledDown }) => {
         )}
         aria-label="Hlavní menu"
       >
-        <ul className="flex flex-col items-center justify-end divide-y-2 divide-accent-500 lg:flex-1 lg:flex-row lg:divide-y-0 lg:divide-x-2">
-          <li className="py-4">
-            <Link href="/article/new-article">
-              <a className={`px-8 ${menuLinkStyle}`}>Nový článek</a>
-            </Link>
-          </li>
-          <li className="py-2 lg:py-0">
-            <Link href="/user-profile">
-              <a className={`flex items-center px-8 ${menuLinkStyle}`}>
-                <div className="mr-4">
-                  <Image
-                    className="rounded-full"
-                    src={profilePic}
-                    alt=""
-                    width="36"
-                    height="36"
-                  />
-                </div>
-                Profil
-              </a>
-            </Link>
-          </li>
-          <li className="flex w-full items-center py-4 lg:max-h-[42px] lg:w-auto">
-            <Link href="/log-out">
-              <a className={`px-8 ${menuLinkStyle}`}>Odhlásit se</a>
-            </Link>
-          </li>
-        </ul>
+        {currentUser ? (
+          <ul className="flex flex-col items-center justify-end lg:flex-1 lg:flex-row ">
+            <li className="py-2 px-4">{currentUser?.email}</li>
+
+            <li className="py-4">
+              <Link href="/article/new-article">
+                <a className="my-4 w-full rounded-md border-b-4 border-b-accent-600 bg-accent-500 px-10 py-3 text-white transition-colors hover:border-accent-500 hover:bg-accent-600 disabled:opacity-30 disabled:hover:border-b-accent-600 disabled:hover:bg-accent-500">
+                  + Nový článek
+                </a>
+              </Link>
+            </li>
+
+            {/* <li className="py-2 lg:py-0">
+              <Link href="/user-profile">
+                <a className={`flex items-center px-8 ${menuLinkStyle}`}>
+                  <div className="mr-4">
+                    <Image
+                      className="rounded-full"
+                      src={profilePic}
+                      alt=""
+                      width="36"
+                      height="36"
+                    />
+                  </div>
+                  Profil
+                </a>
+              </Link>
+            </li> */}
+            <li className="flex w-full items-center py-4 lg:max-h-[42px] lg:w-auto">
+              <button
+                type="button"
+                onClick={handleLogout}
+                className={`px-4 ${menuLinkStyle}`}
+              >
+                Odhlásit se
+              </button>
+            </li>
+          </ul>
+        ) : (
+          <ul className="flex flex-col items-center justify-end divide-y-2 divide-accent-500 lg:flex-1 lg:flex-row lg:divide-y-0 lg:divide-x-2">
+            <li className="p-4">
+              <Link href="/login">
+                <a className={`${menuLinkStyle}`}>Přihlásit se</a>
+              </Link>
+            </li>
+            <li className="py-2 px-4">
+              <Link href="/registration">
+                <a className={`${menuLinkStyle}`}>Registrovat</a>
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
     </>
   );
