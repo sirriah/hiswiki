@@ -3,25 +3,34 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Layout } from '../components/Layout';
-// import { FormInput } from '../components/Form/FormInput';
 import { useAuth } from '../contexts/AuthContext';
 import { FormInput } from '../components/Form/FormInput';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const router = useRouter();
   const { login, currentUser, logout } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
+    setError('');
     try {
-      setLoading(true);
       await login(e.target.email.value, e.target.passwd.value);
       router.push('/');
-    } catch {
-      alert('chyba pri prihlasovani');
+    } catch (err) {
+      if (
+        err.code === 'auth/wrong-password' ||
+        err.code === 'auth/user-not-found'
+      ) {
+        setError('Neplatné uživatelské jméno nebo heslo.');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Email není ve správném tvaru');
+      } else {
+        setError('Při přihlašování se vyskytla chyba.');
+      }
     }
     setLoading(false);
   };
@@ -39,17 +48,18 @@ const Login = () => {
     <Layout>
       <div className="w-full md:mx-auto md:w-96">
         <h1 className="headline--3">Přihlášení</h1>
+        {error && <p className="my-3 bg-red-100 p-3 text-red-800">{error}</p>}
         <div>
           <form onSubmit={handleSubmit}>
             <FormInput
-              type="text"
+              type="email"
               label="E-mail"
               id="email"
               placeholder="Email"
               defaultValue=""
               className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
             />
-            <input
+            <FormInput
               type="password"
               label="Heslo"
               id="passwd"

@@ -1,23 +1,31 @@
-import { useRef, useState } from 'react';
+import { useState, useRouter } from 'react';
 import Link from 'next/link';
 
 import { Layout } from '../components/Layout';
-// import { FormInput } from '../components/Form/FormInput';
 import { useAuth } from '../contexts/AuthContext';
+import { FormInput } from '../components/Form/FormInput';
 
 const Registration = () => {
   const [loading, setLoading] = useState(false);
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const { signup, currentUser } = useAuth();
+  const [error, setError] = useState('');
+  const { signup } = useAuth();
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     try {
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-    } catch {
-      alert('chyba pri registraci');
+      await signup(e.target.email.value, e.target.passwd.value);
+      router.push('/');
+    } catch (err) {
+      if (err.code === 'auth/weak-password') {
+        setError('Příliš slabé heslo. Zvolte delší než 6 znaků.');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Email není ve správném tvaru');
+      } else {
+        setError('Při přihlašování se vyskytla chyba.');
+      }
     }
     setLoading(false);
   };
@@ -26,25 +34,23 @@ const Registration = () => {
     <Layout>
       <div className="w-full md:mx-auto md:w-96">
         <h1 className="headline--3">Registrace</h1>
+        {error && <p className="my-3 bg-red-100 p-3 text-red-800">{error}</p>}
         <div>
-          {currentUser?.email}
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
+            <FormInput
+              type="email"
               label="E-mail"
               id="email"
               placeholder="email"
               defaultValue=""
-              ref={emailRef}
               className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
             />
-            <input
+            <FormInput
               type="password"
               label="Heslo"
               id="passwd"
               placeholder="passwd"
               defaultValue=""
-              ref={passwordRef}
               className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
             />
 
