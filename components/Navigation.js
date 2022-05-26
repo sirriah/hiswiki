@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
-// import Image from 'next/image';
 import classNames from 'classnames';
 
 import { useAuth } from '../contexts/AuthContext';
-// import profilePic from '../public/img/profile.jpg';
 
 const burgerMenuStyle =
   'absolute right-2 block h-[2px] w-[26px] bg-slate-500 transition duration-300 ease-in-out';
@@ -82,22 +80,6 @@ export const Navigation = ({ isScrolledDown }) => {
               </Link>
             </li>
 
-            {/* <li className="py-2 lg:py-0">
-              <Link href="/user-profile">
-                <a className={`flex items-center px-8 ${menuLinkStyle}`}>
-                  <div className="mr-4">
-                    <Image
-                      className="rounded-full"
-                      src={profilePic}
-                      alt=""
-                      width="36"
-                      height="36"
-                    />
-                  </div>
-                  Profil
-                </a>
-              </Link>
-            </li> */}
             <li className="flex w-full items-center py-4 lg:max-h-[42px] lg:w-auto">
               <button
                 type="button"
