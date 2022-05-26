@@ -1,4 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -23,20 +29,30 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const signup = (email, passwd) =>
-    createUserWithEmailAndPassword(auth, email, passwd);
+  const signup = useCallback(
+    (email, passwd) => createUserWithEmailAndPassword(auth, email, passwd),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [auth],
+  );
 
-  const login = (email, passwd) =>
-    signInWithEmailAndPassword(auth, email, passwd);
+  const login = useCallback(
+    (email, passwd) => signInWithEmailAndPassword(auth, email, passwd),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [auth],
+  );
 
-  const logout = () => signOut(auth);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const logout = useCallback(() => signOut(auth), [auth]);
 
-  const value = {
-    currentUser,
-    signup,
-    login,
-    logout,
-  };
+  const value = useMemo(
+    () => ({
+      currentUser,
+      signup,
+      login,
+      logout,
+    }),
+    [currentUser, signup, login, logout],
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
