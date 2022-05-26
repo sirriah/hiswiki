@@ -8,7 +8,7 @@ export const ArticleCard = ({
   link,
 }) => (
   <Link href={`/article/${link}`}>
-    <a className="flex-1 text-xl font-medium tracking-wider">
+    <a className="flex-1 text-xl font-medium tracking-wider" aria-label={title}>
       <article
         style={{
           backgroundImage: `url(${
