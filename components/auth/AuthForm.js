@@ -7,7 +7,7 @@ export const AuthForm = ({ actionCallback, loading, buttonText }) => (
       type="email"
       label="E-mail"
       id="email"
-      placeholder="email"
+      placeholder="E-mail"
       defaultValue=""
       className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
     />
@@ -15,7 +15,7 @@ export const AuthForm = ({ actionCallback, loading, buttonText }) => (
       type="password"
       label="Heslo"
       id="passwd"
-      placeholder="passwd"
+      placeholder="Heslo"
       defaultValue=""
       className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
     />
