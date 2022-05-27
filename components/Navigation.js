@@ -18,7 +18,7 @@ export const Navigation = ({ isScrolledDown }) => {
     try {
       await logout();
     } catch {
-      alert('Chyba pri odhlaseni');
+      //
     }
   };
 
@@ -70,7 +70,7 @@ export const Navigation = ({ isScrolledDown }) => {
       >
         {currentUser ? (
           <ul className="flex flex-col items-center justify-end lg:flex-1 lg:flex-row ">
-            <li className="py-2 px-4">{currentUser?.email}</li>
+            <li className="p-4">{currentUser?.email}</li>
 
             <li className="py-4">
               <Link href="/article/new-article">
@@ -80,11 +80,11 @@ export const Navigation = ({ isScrolledDown }) => {
               </Link>
             </li>
 
-            <li className="flex w-full items-center py-4 lg:max-h-[42px] lg:w-auto">
+            <li className="flex w-full items-center p-4 lg:max-h-[42px] lg:w-auto">
               <button
                 type="button"
                 onClick={handleLogout}
-                className={`px-4 ${menuLinkStyle}`}
+                className={`${menuLinkStyle}`}
               >
                 Odhlásit se
               </button>
@@ -97,7 +97,7 @@ export const Navigation = ({ isScrolledDown }) => {
                 <a className={`${menuLinkStyle}`}>Přihlásit se</a>
               </Link>
             </li>
-            <li className="py-2 px-4">
+            <li className="p-4">
               <Link href="/registration">
                 <a className={`${menuLinkStyle}`}>Registrovat</a>
               </Link>

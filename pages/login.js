@@ -9,7 +9,7 @@ import { AuthForm } from '../components/auth/AuthForm';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState('');
 
   const router = useRouter();
   const { login } = useAuth();
@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <div className="w-full md:mx-auto md:w-96">
+      <div className="w-full pb-44 md:mx-auto md:w-96">
         <AuthTitle error={error}>Přihlásit se</AuthTitle>
         <div>
           <AuthForm

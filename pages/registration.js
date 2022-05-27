@@ -36,7 +36,7 @@ const Registration = () => {
 
   return (
     <Layout>
-      <div className="w-full md:mx-auto md:w-96">
+      <div className="w-full pb-44 md:mx-auto md:w-96">
         <AuthTitle error={error}>Registrace</AuthTitle>
         {error && <p className="my-3 bg-red-100 p-3 text-red-800">{error}</p>}
         <div>
