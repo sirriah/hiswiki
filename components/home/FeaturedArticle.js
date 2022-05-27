@@ -13,7 +13,10 @@ export const FeaturedArticle = ({
   <article className="min-h-80 my-4 justify-center md:flex md:px-4">
     <div className="relative w-full rounded-md bg-light-50 md:flex lg:w-[1088px]">
       <Link href={`/article/${link}`}>
-        <a className="relative block w-full md:h-auto md:w-1/2">
+        <a
+          className="relative block w-full md:h-auto md:w-1/2"
+          aria-label={title}
+        >
           <Image
             src={
               featuredImage ||

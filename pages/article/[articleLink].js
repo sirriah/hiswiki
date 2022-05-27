@@ -59,22 +59,23 @@ const Article = () => {
 
         <h1 className="headline--1 underline-large mb-5">{title}</h1>
         <div className="mt-5 flex flex-col-reverse md:flex-row">
-          <div className="md:mr-[5%] md:w-[70%]">
+          <div className="mt-6 md:mr-[5%] md:w-[70%]">
             <p>{decodeURIComponent(content)}</p>
           </div>
 
           <aside className="mt-8 w-full md:m-0 md:w-1/4" aria-label="sidebar">
             {featuredImage && (
               <figure>
-                <div className="relative block h-[300px] w-full">
+                <div className="relative block h-[200px] w-full sm:h-[300px]">
                   <Image
                     src={decodeURIComponent(featuredImage)}
                     layout="fill"
                     className="relative block"
-                    objectFit="contain"
+                    objectFit="cover"
                     aria-labelledby="freaturedImageAlt"
                   />
                 </div>
+
                 {altForFeaturedImage && (
                   <figcaption
                     id="freaturedImageAlt"
