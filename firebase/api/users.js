@@ -20,8 +20,8 @@ export const addNewUser = async (userData) => {
 
 export const editUserProfile = async (formData) => {
   const payload = {
-    name: formData.name,
-    surname: formData.surname,
+    firstName: formData.firstName,
+    lastName: formData.lastName,
     bio: formData.bio,
     profilePic: formData.profilePic,
   };

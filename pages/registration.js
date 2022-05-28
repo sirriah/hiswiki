@@ -20,8 +20,10 @@ const Registration = () => {
 
     try {
       setLoading(true);
+
       const newUser = await signup(e.target.email.value, e.target.passwd.value);
       addNewUser({ id: newUser.user.uid, email: e.target.email.value });
+
       router.push('/');
     } catch (err) {
       if (err.code === 'auth/weak-password') {

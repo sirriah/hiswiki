@@ -1,7 +1,5 @@
 import Link from 'next/link';
 
-// import Weather from '../public/img/weather.svg';
-
 const menuItem = ['Přidat článek', 'Váš profil', 'Odhlásit se'];
 
 export const Footer = () => (
@@ -20,13 +18,6 @@ export const Footer = () => (
           ))}
         </ul>
       </nav>
-      {/*   <div>
-        <h2 className="headline--3 p-0">Počasí v Praze</h2>
-        <div className="flex">
-          <Weather className="w-20" />
-          <p>15° C</p>
-        </div>
-      </div> */}
     </div>
     <div className="w-full bg-dark-600 p-5 text-center text-white">
       Všechna práva vyhrazena - © 2022 Loděnice v historii, z. s.

@@ -84,6 +84,7 @@ const Home = () => {
                 details,
                 keywords,
                 portals,
+                author,
               }) => (
                 <ArticleCard
                   key={id}
@@ -94,7 +95,7 @@ const Home = () => {
                   details={details}
                   keywords={keywords}
                   portals={portals}
-                  author="Tereza Fatková"
+                  author={author}
                 />
               ),
             )}

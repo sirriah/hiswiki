@@ -33,7 +33,7 @@ const UserProfile = () => {
     return <Loader />;
   }
 
-  const { name, surname, profilePic, bio, username } = user;
+  const { profilePic, bio, username } = user;
 
   return (
     <Layout>
@@ -58,9 +58,10 @@ const UserProfile = () => {
         </div>
         <div>
           <h1 className="headline--1 underline-large">
-            {`${name} ${surname}` || username}
+            {user?.firstName && user?.lastName
+              ? `${user.firstName} ${user.lastName}`
+              : username}
           </h1>
-
           <p className="py-4">{bio}</p>
           <h2 className="headline--3 pt-5">Články:</h2>
           <ul className="pb-14">

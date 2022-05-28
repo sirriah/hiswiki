@@ -9,7 +9,7 @@ import { FormInput } from '../../../components/Form/FormInput';
 import { FormTextarea } from '../../../components/Form/FormTextarea';
 import imgPlaceholder from '../../../public/img/img_placeholder_user.webp';
 import { editUserProfile } from '../../../firebase/api/users';
-import { PrivateRouter } from '../../../HOC/PrivateRouter';
+import { PrivateRouter } from '../../../components/PrivateRouter';
 import { useAuth } from '../../../contexts/AuthContext';
 
 const EditUser = () => {
@@ -23,7 +23,9 @@ const EditUser = () => {
 
   useEffect(() => {
     const handleFetching = async () => {
-      setUser(await getUserDetail(currentUser.uid));
+      const data = await getUserDetail(currentUser.uid);
+      setUser(data);
+      setProfilePicState(data.profilePic);
     };
 
     if (currentUser.uid) {
@@ -35,7 +37,7 @@ const EditUser = () => {
     return <Loader />;
   }
 
-  const { name, surname, username, bio, profilePic } = user;
+  const { firstName, lastName, username, bio } = user;
 
   const handleImageChange = (e) => {
     setProfilePicState(e.target.value);
@@ -46,8 +48,8 @@ const EditUser = () => {
 
     const formData = {
       uid: currentUser.uid,
-      name: e.target.name.value,
-      surname: e.target.surname.value,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
       bio: e.target.bio.value,
       profilePic: e.target.profileImage.value,
     };
@@ -68,7 +70,7 @@ const EditUser = () => {
         >
           <div className="w-full md:w-64">
             <Image
-              src={profilePicState || profilePic || imgPlaceholder}
+              src={profilePicState || imgPlaceholder}
               width="200"
               height="200"
               alt="avatar"
@@ -80,24 +82,24 @@ const EditUser = () => {
               id="profileImage"
               label="Hlavní obrázek - URL"
               type="text"
-              value={profilePicState || profilePic}
+              value={profilePicState || ''}
               onChange={handleImageChange}
             />
           </div>
           <div className="flex-1">
             <FormInput
-              id="name"
+              id="firstName"
               labelClassName="mt-6 mb-1 block text-sm text-stone-700"
               className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
               label="Jméno:"
-              defaultValue={name || ''}
+              defaultValue={firstName || ''}
             />
             <FormInput
-              id="surname"
+              id="lastName"
               labelClassName="mt-6 mb-1 block text-sm text-stone-700"
               className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
               label="Příjmení:"
-              defaultValue={surname || ''}
+              defaultValue={lastName || ''}
             />
 
             <FormTextarea
