@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { useRouter } from 'next/router';
 
 import { useAuth } from '../contexts/AuthContext';
 
@@ -13,10 +14,12 @@ const menuLinkStyle =
 export const Navigation = ({ isScrolledDown }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { currentUser, logout } = useAuth();
+  const router = useRouter();
 
   const handleLogout = async () => {
     try {
       await logout();
+      router.push('/');
     } catch {
       //
     }
@@ -70,7 +73,11 @@ export const Navigation = ({ isScrolledDown }) => {
       >
         {currentUser ? (
           <ul className="flex flex-col items-center justify-end lg:flex-1 lg:flex-row ">
-            <li className="p-4">{currentUser?.email}</li>
+            <li className="p-4">
+              <Link href={`/user/${currentUser.uid}`}>
+                <a className={`${menuLinkStyle}`}>{currentUser?.email}</a>
+              </Link>
+            </li>
 
             <li className="py-4">
               <Link href="/article/new-article">

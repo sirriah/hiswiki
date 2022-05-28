@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Footer } from './Footer';
-import { SearchBar } from './SearchBar';
+// import { SearchBar } from './SearchBar';
 import { Navigation } from './Navigation';
 
 export const Layout = ({ children }) => (
@@ -16,7 +16,7 @@ export const Layout = ({ children }) => (
               </a>
             </Link>
 
-            <SearchBar isScrolledDown />
+            {/*    <SearchBar isScrolledDown /> */}
 
             <Navigation isScrolledDown />
           </div>

@@ -83,6 +83,7 @@ export const addNewArticle = async (formData) => {
     keywords: parseKeywords(formData.keywords) || '',
     portals: formData.portals || '',
     details: formData.details || '',
+    author: formData.author,
   };
 
   const articlesCollectionRef = collection(firebase, 'articles');
@@ -105,4 +106,14 @@ export const editArticle = async (formData) => {
 
   const docRef = doc(firebase, 'articles', formData.id);
   await setDoc(docRef, payload, { merge: true });
+};
+
+export const getAllArticlesFromUser = async (userID) => {
+  const articlesCollectionRef = collection(firebase, 'articles');
+  const q = query(articlesCollectionRef, where('author', '==', userID));
+  const dataArticle = await getDocs(q);
+
+  const plainArticleData = transformSnapshot(dataArticle);
+
+  return plainArticleData;
 };
