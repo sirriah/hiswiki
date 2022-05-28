@@ -91,7 +91,7 @@ const Article = () => {
                 )}
               </figure>
             )}
-            {details && (
+            {details.length > 0 ? (
               <div>
                 <div
                   onClick={openDetails}
@@ -127,6 +127,8 @@ const Article = () => {
                   ))}
                 </section>
               </div>
+            ) : (
+              ''
             )}
           </aside>
         </div>
@@ -137,8 +139,8 @@ const Article = () => {
             </h2>
             <Link href={`/user/${author}`}>
               <a className="link">
-                {user?.name && user?.surname
-                  ? `${user.name} ${user.surname}`
+                {user?.firstName && user?.lastName
+                  ? `${user.firstName} ${user.lastName}`
                   : user.username}
               </a>
             </Link>

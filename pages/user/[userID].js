@@ -64,7 +64,7 @@ const UserProfile = () => {
           </h1>
           <p className="py-4">{bio}</p>
           <h2 className="headline--3 pt-5">Články:</h2>
-          <ul className="pb-14">
+          <ul className="ml-4 pb-14">
             {listOfArticles.map(({ id, link, dateOfPublication, title }) => (
               <li className="list-disc py-2" key={id}>
                 <p>
