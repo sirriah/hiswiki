@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { Layout } from '../../components/Layout';
-// import { Loader } from '../../components/Loader';
+import { Loader } from '../../components/Loader';
 import { FeaturedArticle } from '../../components/home/FeaturedArticle';
 import { getListOfAllArticlesWithPortal } from '../../firebase/api/portals';
 import { ArticleExcerpt } from '../../components/ArticleExcerpt';
@@ -28,12 +28,11 @@ const Portal = () => {
     if (nameRouter) {
       fetchArticlesWithPortal();
     }
-    /*
-    if (!nameRouter) {
-      return <Loader />;
-    }
-    */
   }, [nameRouter]);
+
+  if (!nameRouter) {
+    return <Loader />;
+  }
 
   return (
     <Layout>
