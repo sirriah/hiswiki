@@ -17,9 +17,7 @@ const EditUser = () => {
   const { currentUser } = useAuth();
 
   const [user, setUser] = useState();
-
   const [profilePicState, setProfilePicState] = useState('');
-  // review
 
   useEffect(() => {
     const handleFetching = async () => {

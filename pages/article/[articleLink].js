@@ -26,9 +26,11 @@ const Article = () => {
 
   useEffect(() => {
     const handleFetching = async () => {
-      const data = await getArticleDetail(articleLink);
-      setArticle(data);
-      setUser(await getUserDetail(data.author));
+      const articleDetail = await getArticleDetail(articleLink);
+      const userDetail = await getUserDetail(articleDetail.author);
+
+      setArticle(articleDetail);
+      setUser(userDetail);
     };
 
     if (articleLink) {
@@ -91,7 +93,7 @@ const Article = () => {
                 )}
               </figure>
             )}
-            {details.length > 0 ? (
+            {details.length > 0 && (
               <div>
                 <div
                   onClick={openDetails}
@@ -127,8 +129,6 @@ const Article = () => {
                   ))}
                 </section>
               </div>
-            ) : (
-              ''
             )}
           </aside>
         </div>
