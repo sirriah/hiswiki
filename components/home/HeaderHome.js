@@ -3,7 +3,6 @@ import Link from 'next/link';
 import classNames from 'classnames';
 
 import { Navigation } from '../Navigation.js';
-// import { SearchBar } from '../SearchBar.js';
 
 export const HeaderHome = () => {
   const [isHeaderTransparent, setIsHeaderTransparent] = useState(false);
@@ -43,8 +42,6 @@ export const HeaderHome = () => {
               Hiswiki
             </a>
           </Link>
-
-          {/*  <SearchBar isScrolledDown={isHeaderTransparent} /> */}
 
           <Navigation isScrolledDown={isHeaderTransparent} />
         </div>
