@@ -7,6 +7,7 @@ import { FormInput } from './Form/FormInput';
 import { FormTextarea } from './Form/FormTextarea';
 import { FormCheckbox } from './Form/FormCheckbox';
 import { Details } from './Details';
+import { useAuth } from '../contexts/AuthContext';
 
 const listOfPortalsValues = [
   'Osoby',
@@ -34,6 +35,7 @@ export const ArticleForm = ({
   details,
 }) => {
   const router = useRouter();
+  const { currentUser } = useAuth();
 
   const [isTitleDifferent, setIsTitleDifferent] = useState(
     !!alphabeticalTitle && alphabeticalTitle !== title,
@@ -69,6 +71,7 @@ export const ArticleForm = ({
       link: link || '',
       portals,
       details: detailsState,
+      author: currentUser.uid,
     };
 
     await articleCallback(formData);

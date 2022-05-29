@@ -6,6 +6,7 @@ import { Layout } from '../components/Layout';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthTitle } from '../components/auth/AuthTitle';
 import { AuthForm } from '../components/auth/AuthForm';
+import { addNewUser } from '../firebase/api/users';
 
 const Registration = () => {
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,10 @@ const Registration = () => {
 
     try {
       setLoading(true);
-      await signup(e.target.email.value, e.target.passwd.value);
+
+      const newUser = await signup(e.target.email.value, e.target.passwd.value);
+      addNewUser({ id: newUser.user.uid, email: e.target.email.value });
+
       router.push('/');
     } catch (err) {
       if (err.code === 'auth/weak-password') {

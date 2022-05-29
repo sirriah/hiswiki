@@ -5,6 +5,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 
 import { getArticleDetail } from '../../firebase/api/articles';
+import { getUserDetail } from '../../firebase/api/users';
 import { Layout } from '../../components/Layout';
 import { PortalLink } from '../../components/PortalLink';
 import { KeywordLink } from '../../components/KeywordLink';
@@ -17,14 +18,19 @@ const Article = () => {
 
   const [article, setArticle] = useState();
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [user, setUser] = useState();
 
-  const openDetailsHandler = () => {
+  const openDetails = () => {
     setIsDetailsOpen(!isDetailsOpen);
   };
 
   useEffect(() => {
     const handleFetching = async () => {
-      setArticle(await getArticleDetail(articleLink));
+      const articleDetail = await getArticleDetail(articleLink);
+      const userDetail = await getUserDetail(articleDetail.author);
+
+      setArticle(articleDetail);
+      setUser(userDetail);
     };
 
     if (articleLink) {
@@ -46,6 +52,7 @@ const Article = () => {
     keywords,
     portals,
     altForFeaturedImage,
+    author,
   } = article;
 
   return (
@@ -86,10 +93,10 @@ const Article = () => {
                 )}
               </figure>
             )}
-            {details && (
+            {details.length > 0 && (
               <div>
                 <div
-                  onClick={openDetailsHandler}
+                  onClick={openDetails}
                   className="flex cursor-pointer justify-between bg-accent-200 p-3 font-bold md:hidden"
                 >
                   <h2>
@@ -125,7 +132,22 @@ const Article = () => {
             )}
           </aside>
         </div>
-        <section className="mt-20 mb-10 border-t-2 border-accent-200">
+        {user && (
+          <section>
+            <h2 className="mb-5 mt-5 font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900">
+              Autor
+            </h2>
+            <Link href={`/user/${author}`}>
+              <a className="link">
+                {user?.firstName && user?.lastName
+                  ? `${user.firstName} ${user.lastName}`
+                  : user.username}
+              </a>
+            </Link>
+          </section>
+        )}
+
+        <section className="mt-10 mb-10 border-t-2 border-accent-200">
           {keywords && (
             <div className="border-b-2 border-accent-200 py-8">
               <h2 className="mb-5 font-yrsa text-lg font-medium uppercase tracking-widest shadow-neutral-900">
