@@ -10,34 +10,30 @@ import { ArticleExcerpt } from '../../components/ArticleExcerpt';
 const Portal = () => {
   const router = useRouter();
 
-  const [nameRouter, setNameRouter] = useState();
   const [listOfArticlesWithPortal, setListOfArticlesWithPortal] = useState([]);
-
-  useEffect(() => {
-    const { portalLink } = router.query;
-    setNameRouter(portalLink);
-  }, [router]);
 
   useEffect(() => {
     const fetchArticlesWithPortal = async () => {
       setListOfArticlesWithPortal(
-        await getListOfAllArticlesWithPortal(nameRouter),
+        await getListOfAllArticlesWithPortal(router.query.portalLink),
       );
     };
 
-    if (nameRouter) {
+    if (router.query.portalLink) {
       fetchArticlesWithPortal();
     }
-  }, [nameRouter]);
+  }, [router.query.portalLink]);
 
-  if (!nameRouter) {
+  if (!router.query.portalLink) {
     return <Loader />;
   }
 
   return (
     <Layout>
       <div className="mx-auto w-[1088px]">
-        <h1 className="headline--1 underline-large">Portál: {nameRouter}</h1>
+        <h1 className="headline--1 underline-large">
+          Portál: {router.query.portalLink}
+        </h1>
         {listOfArticlesWithPortal
           .slice(0, 1)
           .map(
