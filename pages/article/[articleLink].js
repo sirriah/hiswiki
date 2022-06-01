@@ -58,11 +58,13 @@ const Article = () => {
   return (
     <Layout>
       <div key={id}>
-        <Link href={`/article/edit/${link}`}>
-          <a className="block-inline text-right text-blue-600 underline">
-            <h2>Editovat článek</h2>
-          </a>
-        </Link>
+        <div className="flex justify-end">
+          <Link href={`/article/edit/${link}`}>
+            <a className="inline-block text-right text-blue-600 underline">
+              <h2>Editovat článek</h2>
+            </a>
+          </Link>
+        </div>
 
         <h1 className="headline--1 underline-large mb-5">{title}</h1>
         <div className="mt-5 flex flex-col-reverse md:flex-row">
