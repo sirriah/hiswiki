@@ -66,7 +66,7 @@ const Article = () => {
 
         <h1 className="headline--1 underline-large mb-5">{title}</h1>
         <div className="mt-5 flex flex-col-reverse md:flex-row">
-          <div className="mt-6 md:mr-[5%] md:w-[65%]">
+          <div className="mt-6 leading-8 md:mr-[5%] md:w-[65%]">
             <p>{decodeURIComponent(content)}</p>
           </div>
 
@@ -86,7 +86,7 @@ const Article = () => {
                 {altForFeaturedImage && (
                   <figcaption
                     id="freaturedImageAlt"
-                    className="pb-5 text-center text-sm text-dark-300"
+                    className="py-5 text-center text-sm text-dark-300"
                   >
                     {decodeURIComponent(altForFeaturedImage)}
                   </figcaption>

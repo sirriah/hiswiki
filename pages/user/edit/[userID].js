@@ -54,7 +54,7 @@ const EditUser = () => {
 
     await editUserProfile(formData);
 
-    router.push('/');
+    router.push(`/user/${currentUser.uid}`);
   };
 
   return (
