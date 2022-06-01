@@ -45,8 +45,8 @@ const UserProfile = () => {
         </p>
       )}
 
-      <div className="mx-auto flex max-w-[800px] gap-12">
-        <div className="">
+      <div className="mx-auto flex w-full flex-col gap-12 md:max-w-[800px] md:flex-row">
+        <div className="flex justify-center">
           <div className="relative block h-[200px] w-[200px]">
             <Image
               src={profilePic || imgPlaceholder}
@@ -56,7 +56,7 @@ const UserProfile = () => {
             />
           </div>
         </div>
-        <div>
+        <div className="w-full md:w-[80%]">
           <h1 className="headline--1 underline-large">
             {user?.firstName && user?.lastName
               ? `${user.firstName} ${user.lastName}`

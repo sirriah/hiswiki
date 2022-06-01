@@ -66,14 +66,14 @@ const Article = () => {
 
         <h1 className="headline--1 underline-large mb-5">{title}</h1>
         <div className="mt-5 flex flex-col-reverse md:flex-row">
-          <div className="mt-6 md:mr-[5%] md:w-[70%]">
+          <div className="mt-6 md:mr-[5%] md:w-[65%]">
             <p>{decodeURIComponent(content)}</p>
           </div>
 
-          <aside className="mt-8 w-full md:m-0 md:w-1/4" aria-label="sidebar">
+          <aside className="mt-8 w-full md:m-0 md:w-[30%]" aria-label="sidebar">
             {featuredImage && (
               <figure>
-                <div className="relative block h-[200px] w-full sm:h-[300px]">
+                <div className="relative block h-[300px] w-full sm:h-[300px] md:h-[400px]">
                   <Image
                     src={decodeURIComponent(featuredImage)}
                     layout="fill"

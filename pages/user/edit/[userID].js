@@ -88,14 +88,14 @@ const EditUser = () => {
             <FormInput
               id="firstName"
               labelClassName="mt-6 mb-1 block text-sm text-stone-700"
-              className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
+              className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2 lg:w-80"
               label="Jméno:"
               defaultValue={firstName || ''}
             />
             <FormInput
               id="lastName"
               labelClassName="mt-6 mb-1 block text-sm text-stone-700"
-              className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
+              className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2 lg:w-80"
               label="Příjmení:"
               defaultValue={lastName || ''}
             />
@@ -105,7 +105,7 @@ const EditUser = () => {
               labelClassName="my-1 mt-6 block text-sm text-stone-700"
               className="mb-6 w-full border-b-2 border-stone-300 bg-light-50 p-2"
               label="Bio:"
-              rows="4"
+              rows="6"
               defaultValue={bio || ''}
             />
             <button

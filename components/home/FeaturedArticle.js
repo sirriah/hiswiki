@@ -10,11 +10,11 @@ export const FeaturedArticle = ({
   featuredImage,
   dateOfPublication,
 }) => (
-  <article className="min-h-80 my-4 justify-center md:flex md:px-4">
-    <div className="relative w-full rounded-md bg-light-50 md:flex lg:w-[1088px]">
+  <article className="min-h-80 my-4 justify-center md:flex">
+    <div className="relative rounded-md bg-light-50 md:flex md:w-[1088px]">
       <Link href={`/article/${link}`}>
         <a
-          className="relative block w-full md:h-auto md:w-1/2"
+          className="relative block h-80 w-full md:h-auto md:w-80"
           aria-label={title}
         >
           <Image
@@ -35,7 +35,7 @@ export const FeaturedArticle = ({
             <h3 className="headline--3 link">{title}</h3>
           </a>
         </Link>
-        <div className="text-sm text-neutral-500">
+        <div className="text-sm text-neutral-700">
           <time>{dateOfPublication}</time>
         </div>
         <p className="paragraph">{content.substring(0, 350)}...</p>

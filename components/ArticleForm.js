@@ -157,7 +157,7 @@ export const ArticleForm = ({
           </div>
         </div>
 
-        <aside className="w-full lg:w-[25%]">
+        <aside className="mt-10 w-full md:mt-0 lg:w-[25%]">
           <FormCheckbox
             id="isTitleDifferent"
             checked={isTitleDifferent}

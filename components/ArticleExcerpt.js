@@ -21,19 +21,19 @@ export const ArticleExcerpt = ({
             alt=""
             layout="fill"
             objectFit="cover"
-            className="relative block rounded-l-md"
+            className="relative block rounded-md"
           />
         </a>
       </Link>
     </div>
 
-    <div className="w-96">
+    <div className="w-full md:w-96">
       <Link href={`/article/${link}`}>
         <a className="link">
-          <h2 className="headline--3"> {title} </h2>
+          <h2 className="headline--3 my-2"> {title} </h2>
         </a>
       </Link>
-      <time className="text-sm text-neutral-500"> {dateOfPublication}</time>
+      <time className="text-sm text-neutral-700"> {dateOfPublication}</time>
       <p className="paragraph">{content.substring(0, 200)}...</p>
     </div>
   </article>
