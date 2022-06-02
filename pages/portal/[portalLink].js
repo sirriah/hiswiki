@@ -30,7 +30,7 @@ const Portal = () => {
 
   return (
     <Layout>
-      <div className="mx-auto w-[1088px]">
+      <div className="mx-auto max-w-[1088px]">
         <h1 className="headline--1 underline-large">
           Portál: {router.query.portalLink}
         </h1>

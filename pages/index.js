@@ -54,51 +54,62 @@ const Home = () => {
         </div>
       </section>
 
-      <h2 className="underline-medium pt-12 text-center">Nejnovější články</h2>
-      {allArticles
-        .slice(0, 1)
-        .map(
-          ({ id, title, content, link, featuredImage, dateOfPublication }) => (
-            <FeaturedArticle
-              key={id}
-              title={title}
-              content={decodeURIComponent(content)}
-              link={decodeURIComponent(link)}
-              featuredImage={decodeURIComponent(featuredImage)}
-              dateOfPublication={dateOfPublication}
-            />
-          ),
-        )}
+      <section>
+        <h2 className="underline-medium pt-12 text-center">
+          Nejnovější články
+        </h2>
+        {allArticles
+          .slice(0, 1)
+          .map(
+            ({
+              id,
+              title,
+              content,
+              link,
+              featuredImage,
+              dateOfPublication,
+            }) => (
+              <FeaturedArticle
+                key={id}
+                title={title}
+                content={decodeURIComponent(content)}
+                link={decodeURIComponent(link)}
+                featuredImage={decodeURIComponent(featuredImage)}
+                dateOfPublication={dateOfPublication}
+              />
+            ),
+          )}
 
-      <section className="w-full justify-center md:flex">
-        <div className="w-full space-x-4 md:flex lg:w-[1088px]">
-          {allArticles
-            .slice(1, 4)
-            .map(
-              ({
-                id,
-                link,
-                title,
-                dateOfPublication,
-                featuredImage,
-                details,
-                keywords,
-                portals,
-                author,
-              }) => (
-                <ArticleCard
-                  key={id}
-                  featuredImage={decodeURIComponent(featuredImage)}
-                  title={title}
-                  dateOfPublication={dateOfPublication}
-                  link={decodeURIComponent(link)}
-                  details={details}
-                  keywords={keywords}
-                  portals={portals}
-                  author={author}
-                />
-              ),
-            )}
+        <div className="w-full justify-center md:flex">
+          <div className="w-full space-x-4 md:flex lg:w-[1088px]">
+            {allArticles
+              .slice(1, 4)
+              .map(
+                ({
+                  id,
+                  link,
+                  title,
+                  dateOfPublication,
+                  featuredImage,
+                  details,
+                  keywords,
+                  portals,
+                  author,
+                }) => (
+                  <ArticleCard
+                    key={id}
+                    featuredImage={decodeURIComponent(featuredImage)}
+                    title={title}
+                    dateOfPublication={dateOfPublication}
+                    link={decodeURIComponent(link)}
+                    details={details}
+                    keywords={keywords}
+                    portals={portals}
+                    author={author}
+                  />
+                ),
+              )}
+          </div>
         </div>
       </section>
 
