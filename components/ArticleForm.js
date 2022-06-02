@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import { CustomImage } from './CustomImage';
 import imgPlaceholder from '../public/img/img_placeholder.png';
 import { FormInput } from './Form/FormInput';
 import { FormTextarea } from './Form/FormTextarea';
@@ -49,7 +49,14 @@ export const ArticleForm = ({
     setIsTitleDifferent(!isTitleDifferent);
   };
 
+  // const [featuredImagePath, setFeaturedImagePath] = useState();
+
   const handleImageChange = (e) => {
+    /*  fetch(e.target.value)
+      .then((value) => console.log(value))
+      .catch((err) => console.log('chyba'));
+
+    setFeaturedImagePath(e.target.value); */
     setFeaturedImageState(e.target.value);
   };
 
@@ -193,11 +200,11 @@ export const ArticleForm = ({
             onChange={handleImageChange}
           />
 
-          <Image
-            src={featuredImageState || imgPlaceholder}
+          <CustomImage
             width="100"
             height="100"
             alt={altForFeaturedImage || ''}
+            src={featuredImageState || imgPlaceholder}
           />
 
           <FormTextarea

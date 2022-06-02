@@ -14,7 +14,7 @@ export const FeaturedArticle = ({
     <div className="relative rounded-md bg-light-50 md:flex md:w-[1088px]">
       <Link href={`/article/${link}`}>
         <a
-          className="relative block h-80 w-full md:h-auto md:w-80"
+          className="relative block h-80 w-full md:h-auto md:w-96"
           aria-label={title}
         >
           <Image
@@ -29,7 +29,7 @@ export const FeaturedArticle = ({
           />
         </a>
       </Link>
-      <div className="px-4 py-4 md:max-w-[400px] lg:max-w-[600px] lg:p-6">
+      <div className="px-4 py-4 md:max-w-[550px] lg:max-w-[700px] lg:p-6">
         <Link href={`/article/${link}`}>
           <a>
             <h3 className="headline--3 link">{title}</h3>
@@ -38,7 +38,7 @@ export const FeaturedArticle = ({
         <div className="text-sm text-neutral-700">
           <time>{dateOfPublication}</time>
         </div>
-        <p className="paragraph">{content.substring(0, 350)}...</p>
+        <p className="paragraph">{content.substring(0, 400)}...</p>
 
         <CustomLink href={`/article/${link}`}>Číst dál</CustomLink>
       </div>

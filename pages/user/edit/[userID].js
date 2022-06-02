@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
+import { CustomImage } from '../../../components/CustomImage';
 import { Loader } from '../../../components/Loader';
 import { Layout } from '../../../components/Layout';
 import { getUserDetail } from '../../../firebase/api/users';
@@ -67,7 +67,7 @@ const EditUser = () => {
           className="flex flex-col justify-between gap-4 md:flex-row"
         >
           <div className="w-full md:w-64">
-            <Image
+            <CustomImage
               src={profilePicState || imgPlaceholder}
               width="200"
               height="200"
