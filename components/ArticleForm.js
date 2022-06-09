@@ -49,14 +49,7 @@ export const ArticleForm = ({
     setIsTitleDifferent(!isTitleDifferent);
   };
 
-  // const [featuredImagePath, setFeaturedImagePath] = useState();
-
   const handleImageChange = (e) => {
-    /*  fetch(e.target.value)
-      .then((value) => console.log(value))
-      .catch((err) => console.log('chyba'));
-
-    setFeaturedImagePath(e.target.value); */
     setFeaturedImageState(e.target.value);
   };
 

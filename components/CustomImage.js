@@ -1,4 +1,4 @@
-export const CustomImage = ({ src, alt, ...rest }) => (
+export const CustomImage = ({ src, alt, imageCallback, ...rest }) => (
   <img
     {...rest}
     src={src}
