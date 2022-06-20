@@ -1,7 +1,19 @@
-import { FormInput } from '../Form/FormInput';
-import { Button } from '../Form/Button';
+import React, { FC } from 'react';
 
-export const AuthForm = ({ actionCallback, loading, buttonText }) => (
+import { FormInput } from '../Form/FormInput.tsx';
+import { Button } from '../Form/Button.tsx';
+
+type Props = {
+  buttonText: string;
+  actionCallback: (event: React.FormEvent<HTMLFormElement>) => void;
+  loading: boolean;
+};
+
+export const AuthForm: FC<Props> = ({
+  actionCallback,
+  loading,
+  buttonText,
+}) => (
   <form onSubmit={actionCallback}>
     <FormInput
       type="email"
@@ -20,7 +32,7 @@ export const AuthForm = ({ actionCallback, loading, buttonText }) => (
       className="mb-4 block w-full border-b-2 border-stone-300 bg-light-50 p-2"
     />
 
-    <Button disabled={loading} type="submit">
+    <Button loading={loading} type="submit">
       {buttonText}
     </Button>
   </form>

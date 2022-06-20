@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Layout } from '../components/Layout';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthTitle } from '../components/auth/AuthTitle';
-import { AuthForm } from '../components/auth/AuthForm';
+import { AuthForm } from '../components/auth/AuthForm.tsx';
 import { addNewUser } from '../firebase/api/users';
 
 const Registration = () => {

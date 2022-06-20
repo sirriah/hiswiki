@@ -1,11 +1,25 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import React, { FC, useState } from 'react';
 
-import { FormLabel } from './FormLabel';
+import { FormLabel } from './FormLabel.tsx';
 
 const regex = /^[a-zA-Zá-žÁ-Ž0-9 .]+$/;
 
-export const FormInput = ({
+type Props = {
+  type: 'email' | 'number' | 'text' | 'password' | undefined;
+  defaultValue?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  labelClassName?: string;
+  label: string;
+  required?: boolean;
+  value?: any;
+  pattern?: string;
+  className?: any;
+  id: string;
+  placeholder: string;
+};
+
+export const FormInput: FC<Props> = ({
   defaultValue,
   onChange,
   labelClassName,
@@ -14,6 +28,8 @@ export const FormInput = ({
   value,
   pattern,
   className,
+  id,
+  placeholder,
   ...props
 }) => {
   const [userInput, setUserInput] = useState(defaultValue || '');
@@ -36,7 +52,7 @@ export const FormInput = ({
       {label && (
         <FormLabel
           labelClassName={labelClassName}
-          id={props.id}
+          htmlFor={id}
           required={required}
           labelName={label}
           isValid={isValid}
@@ -44,6 +60,8 @@ export const FormInput = ({
       )}
       <input
         {...props}
+        id={id}
+        placeholder={placeholder}
         pattern={pattern}
         required={required}
         onChange={handleInputChange}
