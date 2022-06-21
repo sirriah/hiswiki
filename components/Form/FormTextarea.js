@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 
-import { FormLabel } from './FormLabel';
+import { FormLabel } from './FormLabel.tsx';
 
 const regex = /^[a-zA-Zá-žÁ-Ž0-9 .,]+$/;
 

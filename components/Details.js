@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { FormInput } from './Form/FormInput';
+import { FormInput } from './Form/FormInput.tsx';
 
 export const Details = ({ detailsDataCallback, defaultValue }) => {
   const [detailFields, setDetailFields] = useState(defaultValue || []);
