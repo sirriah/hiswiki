@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import { CustomImage } from './CustomImage';
 import imgPlaceholder from '../public/img/img_placeholder.png';
-import { FormInput } from './Form/FormInput';
+import { FormInput } from './Form/FormInput.tsx';
 import { FormTextarea } from './Form/FormTextarea';
 import { FormCheckbox } from './Form/FormCheckbox';
 import { Details } from './Details';

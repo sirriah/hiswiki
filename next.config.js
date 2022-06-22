@@ -13,4 +13,7 @@ module.exports = {
 
     return appConfig;
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
 };

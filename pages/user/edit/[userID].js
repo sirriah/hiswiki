@@ -5,7 +5,7 @@ import { CustomImage } from '../../../components/CustomImage';
 import { Loader } from '../../../components/Loader';
 import { Layout } from '../../../components/Layout';
 import { getUserDetail } from '../../../firebase/api/users';
-import { FormInput } from '../../../components/Form/FormInput';
+import { FormInput } from '../../../components/Form/FormInput.tsx';
 import { FormTextarea } from '../../../components/Form/FormTextarea';
 import imgPlaceholder from '../../../public/img/img_placeholder_user.webp';
 import { editUserProfile } from '../../../firebase/api/users';

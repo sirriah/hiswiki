@@ -1,4 +1,12 @@
-export const Button = ({ loading, children, type, ...props }) => (
+import { FC } from 'react';
+
+type Props = {
+  loading?: boolean;
+  children: string;
+  type: 'button' | 'submit' | 'reset' | undefined;
+};
+
+export const Button: FC<Props> = ({ loading, children, type, ...props }) => (
   <button
     {...props}
     disabled={loading}
